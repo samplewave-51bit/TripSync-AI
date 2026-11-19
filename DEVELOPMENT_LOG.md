@@ -67,3 +67,71 @@
 - Create automated data inspection notebook and script (`ml_pipeline/src/data_loader.py`).
 - Inspect dimensions, null values, data types, and duplicate records.
 - Produce `ml_pipeline/DATA_DICTIONARY.md`.
+
+
+---
+
+## Day 2: Dataset Acquisition, Integrity Verification & Quality Inspection
+- **Date:** 2026-11-20
+- **Development Day:** Day 2 of 35 (Phase 1: Milestone 1 MVP)
+
+### 1. Objectives
+- Acquire real-world Tourism Destination & Attraction Benchmark Dataset into `ml_pipeline/data/raw/`.
+- Verify licensing (CC BY-SA 4.0 / ODbL) and compute SHA-256 cryptographic checksums.
+- Create automated data loader script with mirror fallback mechanism.
+- Execute structural inspection of dimensions, schema, data types, null counts, and duplicate records.
+- Validate relational referential integrity across users, places, and interactions.
+- Produce `ml_pipeline/DATA_DICTIONARY.md` and `ml_pipeline/notebooks/01_data_inspection.ipynb`.
+
+### 2. Work Completed
+- Built `ml_pipeline/src/data_loader.py` with multi-source download resilience and automated checksum verification.
+- Downloaded and verified all 3 dataset components:
+  - `tourism_with_id.csv` (437 attractions, 13 columns, SHA-256: `f7be2257d5f7007c...`)
+  - `tourism_rating.csv` (10,000 rating interactions, 3 columns, SHA-256: `d2c432924f8dcb7e...`)
+  - `user.csv` (300 users, 3 columns, SHA-256: `118572535a530f11...`)
+- Built `ml_pipeline/src/inspect_data.py` providing automated profiling of null values, duplicates, and category distributions.
+- Identified data quality nuances:
+  - 2 junk export columns (`Unnamed: 11` with 100% missing values; `Unnamed: 12` numeric index artifact).
+  - 232 missing values (53.1%) in `Time_Minutes` duration column.
+  - 79 duplicate `(User_Id, Place_Id)` rating events.
+  - Confirmed 100% complete and valid geographic coordinates (`Lat`: [-8.1979, 1.0789], `Long`: [103.9314, 112.8217]).
+  - Confirmed 100% referential integrity with zero orphan records.
+- Authored interactive inspection notebook `ml_pipeline/notebooks/01_data_inspection.ipynb`.
+- Authored comprehensive schema specification `ml_pipeline/DATA_DICTIONARY.md`.
+
+### 3. Files Created or Modified
+- `ml_pipeline/src/data_loader.py` (Automated dataset acquisition and integrity verification)
+- `ml_pipeline/src/inspect_data.py` (Dataset profiling and referential integrity validator)
+- `ml_pipeline/notebooks/01_data_inspection.ipynb` (Interactive Jupyter inspection notebook)
+- `ml_pipeline/DATA_DICTIONARY.md` (Formal schema, types, distributions, and remediation guidance)
+- `DEVELOPMENT_LOG.md` (Updated with Day 2 progress)
+
+### 4. Technical Decisions
+- **Deduplication Strategy:** In Day 3 cleaning, the 79 duplicate interactions in `tourism_rating.csv` will be aggregated by arithmetic mean to produce a single deterministic target score per `(User_Id, Place_Id)`.
+- **Duration Imputation:** For the 53.1% missing `Time_Minutes`, median category-specific duration will be used to reflect realistic activity pacing.
+- **Raw Data Isolation:** Raw CSVs are tracked under `ml_pipeline/data/raw/` with gitignore rules preserving lightweight execution while keeping scripts completely reproducible.
+
+### 5. Problems Encountered
+- Primary mirror for `tourism_with_id.csv` returned HTTP 404.
+
+### 6. Solutions Implemented
+- The automated data loader utilized secondary verified mirror URLs, completing all downloads with zero manual intervention.
+
+### 7. Tests Performed
+- Executed `ml_pipeline/src/data_loader.py` with exit code 0.
+- Executed `ml_pipeline/src/inspect_data.py` confirming dimensions (437 places, 10,000 ratings, 300 users) and referential integrity assertions.
+
+### 8. Git Commit Hash
+- `6f8715b607c812c68d263c2de130ae8ad662ebdb` (Commit message: `data: acquire and inspect travel dataset`)
+
+### 9. Remaining Tasks
+- None for Day 2. Quality Gate 1 fully satisfied.
+
+### 10. Next Day's Objectives (Day 3)
+- Implement `ml_pipeline/src/preprocessing.py`.
+- Handle missing values (prune junk columns, impute `Time_Minutes` by category median).
+- Deduplicate `tourism_rating.csv` interactions.
+- Encode categorical features (`Category`, `City`, `Location`).
+- Standardize and scale numerical features (`Price`, `Rating`, `Time_Minutes`, `Age`).
+- Generate clean, leakage-free train/validation/test splits.
+- Save cleaned datasets into `ml_pipeline/data/processed/`.
