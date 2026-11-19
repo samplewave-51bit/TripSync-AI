@@ -1,70 +1,56 @@
 # Data Dictionary & Schema Specification — TripSync AI
 
-**Document Version:** 1.0.0  
+**Document Version:** 2.0.0 (Global Baseline)  
 **Status:** Validated Raw Data Baseline (Gate 1 Passed)  
-**Dataset Name:** Tourism Destination & Attraction Benchmark Dataset  
-**License:** Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) / ODbL  
+**Dataset Name:** Worldwide Travel Cities (Ratings and Climate)  
+**Source:** Open Data / Kaggle (`furkanima/worldwide-travel-cities-ratings-and-climate`)  
+**Scope:** 560 Global Destinations across 167 Countries  
 
 ---
 
 ## 1. File Catalog & Physical Attributes
 
-| File Name | Physical Size | Dimensions | Record Granularity | Primary Key / Natural Key | SHA-256 Checksum (Truncated) |
-| :--- | :---: | :---: | :--- | :--- | :--- |
-| **`tourism_with_id.csv`** | 357.22 KB | 437 rows × 13 cols | Individual Tourist Attraction / POI | `Place_Id` (Integer) | `f7be2257d5f7007c...` |
-| **`tourism_rating.csv`** | 101.58 KB | 10,000 rows × 3 cols | User-Item Rating Event | Composite `(User_Id, Place_Id)` | `d2c432924f8dcb7e...` |
-| **`user.csv`** | 9.00 KB | 300 rows × 3 cols | User Demographic Profile | `User_Id` (Integer) | `118572535a530f11...` |
+| File Name | Physical Size | Dimensions | Record Granularity | Natural Key | Missing Values |
+| :--- | :---: | :---: | :--- | :--- | :---: |
+| **`worldwide_travel_cities.csv`** | 478.87 KB | 560 rows × 19 cols | Distinct Global Tourist City / Destination | `id` (UUID) | **0 (0.0%)** |
 
 ---
 
-## 2. Table Schemas & Feature Metadata
+## 2. Comprehensive Column Definitions
 
-### 2.1 Attractions Catalog (`tourism_with_id.csv`)
-
-| Column Name | Inferred Type | Storage Type | Null Count (%) | Unique Values | Domain & Value Range | Description & Notes |
+| Column Name | Inferred Type | Target DB Type | Null Count (%) | Unique Values | Value Domain & Range | Semantic Description |
 | :--- | :--- | :--- | :---: | :---: | :--- | :--- |
-| **`Place_Id`** | `int64` | INTEGER | 0 (0.0%) | 437 | [1, 437] | Unique identifier for each tourist attraction. |
-| **`Place_Name`** | `object` / `string` | VARCHAR(255) | 0 (0.0%) | 437 | Text strings | Descriptive title/name of the attraction. |
-| **`Description`** | `object` / `string` | TEXT | 0 (0.0%) | 437 | Indonesian prose | Detailed narrative overview of the attraction. |
-| **`Category`** | `object` / `string` | VARCHAR(50) | 0 (0.0%) | 6 | Taman Hiburan (135), Budaya (117), Cagar Alam (106), Bahari (47), Tempat Ibadah (17), Pusat Perbelanjaan (15) | Primary thematic classification of the venue. |
-| **`City`** | `object` / `string` | VARCHAR(50) | 0 (0.0%) | 5 | Yogyakarta (126), Bandung (124), Jakarta (84), Semarang (57), Surabaya (46) | Urban destination cluster. |
-| **`Price`** | `int64` | NUMERIC | 0 (0.0%) | 58 | [0, 900,000 IDR] | Standard ticket / admission price in local currency units. |
-| **`Rating`** | `float64` | NUMERIC(3,1) | 0 (0.0%) | 27 | [3.4, 5.0], Mean = 4.44 | Historical average consumer rating benchmark. |
-| **`Time_Minutes`**| `float64` | INTEGER | **232 (53.1%)** | 17 | [10, 360], Median = 60 | Average visiting duration in minutes. Requires Day 3 imputation. |
-| **`Coordinate`** | `object` / `string` | TEXT | 0 (0.0%) | 437 | Lat/Lng dictionary string | Raw coordinate representation (redundant with Lat/Long). |
-| **`Lat`** | `float64` | NUMERIC(9,6) | 0 (0.0%) | 437 | [-8.1979, 1.0789] | WGS84 Geographic Latitude. Ready for Leaflet maps. |
-| **`Long`** | `float64` | NUMERIC(9,6) | 0 (0.0%) | 437 | [103.9314, 112.8217] | WGS84 Geographic Longitude. Ready for Leaflet maps. |
-| **`Unnamed: 11`**| `float64` | NULL | **437 (100.0%)** | 0 | None | Artifact column from upstream export. To be dropped. |
-| **`Unnamed: 12`**| `int64` | INTEGER | 0 (0.0%) | 437 | [0, 436] | Upstream row index artifact. To be dropped. |
+| **`id`** | `string` / `uuid` | UUID | 0 (0.0%) | 560 | Standard UUIDv4 | Unique surrogate identifier for each destination. |
+| **`city`** | `string` | VARCHAR(100) | 0 (0.0%) | 557 | Paris, Tokyo, Milan, Rome, etc. | Name of the tourist destination / urban hub. |
+| **`country`** | `string` | VARCHAR(100) | 0 (0.0%) | 167 | USA, Italy, Japan, France, etc. | Sovereign country of destination. |
+| **`region`** | `string` | VARCHAR(50) | 0 (0.0%) | 7 | `europe` (177), `north_america` (104), `asia` (99), `africa` (63), `south_america` (55), `oceania` (51), `middle_east` (11) | Continental macro-region. |
+| **`short_description`** | `string` | TEXT | 0 (0.0%) | 560 | Narrative summaries | Editorial overview of the city's key atmosphere, attractions, and cultural vibe. |
+| **`latitude`** | `float64` | NUMERIC(9,6) | 0 (0.0%) | 560 | [-54.8073, 78.7199] | Geographic Latitude (WGS84). Ready for Leaflet maps. |
+| **`longitude`** | `float64` | NUMERIC(9,6) | 0 (0.0%) | 560 | [-175.2018, 179.3329] | Geographic Longitude (WGS84). Ready for Leaflet maps. |
+| **`avg_temp_monthly`** | `string` (JSON) | JSONB | 0 (0.0%) | 560 | `{"1": {"avg": X, "max": Y, "min": Z}, ...}` | Monthly climatological temperature curves (months 1–12). |
+| **`ideal_durations`** | `string` (JSON) | JSONB | 0 (0.0%) | 8 combinations | `["Weekend"]`, `["Short trip"]`, `["One week"]`, `["Long trip"]` | Optimal duration intervals for travel planning. |
+| **`budget_level`** | `string` | VARCHAR(20) | 0 (0.0%) | 3 | `Mid-range` (339), `Budget` (145), `Luxury` (76) | Financial affordability tier. |
+| **`culture`** | `int64` | SMALLINT | 0 (0.0%) | 4 | [2, 5], Mean = 3.85 | Thematic score for heritage, museums, and historical interest. |
+| **`adventure`** | `int64` | SMALLINT | 0 (0.0%) | 4 | [2, 5], Mean = 3.18 | Thematic score for extreme sports, hiking, and active exploration. |
+| **`nature`** | `int64` | SMALLINT | 0 (0.0%) | 4 | [2, 5], Mean = 3.73 | Thematic score for scenery, parks, wildlife, and natural landscapes. |
+| **`beaches`** | `int64` | SMALLINT | 0 (0.0%) | 5 | [1, 5], Mean = 2.38 | Thematic score for coastline, swimming, and marine relaxation. |
+| **`nightlife`** | `int64` | SMALLINT | 0 (0.0%) | 5 | [1, 5], Mean = 3.02 | Thematic score for bars, clubs, late-night dining, and evening energy. |
+| **`cuisine`** | `int64` | SMALLINT | 0 (0.0%) | 4 | [2, 5], Mean = 3.79 | Thematic score for culinary richness, street food, and gastronomy. |
+| **`wellness`** | `int64` | SMALLINT | 0 (0.0%) | 4 | [2, 5], Mean = 3.07 | Thematic score for spa, relaxation, retreat, and tranquility. |
+| **`urban`** | `int64` | SMALLINT | 0 (0.0%) | 5 | [1, 5], Mean = 3.15 | Thematic score for metropolis vibes, shopping, and modern architecture. |
+| **`seclusion`** | `int64` | SMALLINT | 0 (0.0%) | 5 | [1, 5], Mean = 3.03 | Thematic score for peaceful off-the-beaten-path intimacy. |
 
 ---
 
-### 2.2 Interaction Ratings (`tourism_rating.csv`)
+## 3. Machine Learning Preprocessing Roadmap (Day 3)
 
-| Column Name | Inferred Type | Storage Type | Null Count (%) | Unique Values | Domain & Value Range | Description & Notes |
-| :--- | :--- | :--- | :---: | :---: | :--- | :--- |
-| **`User_Id`** | `int64` | INTEGER | 0 (0.0%) | 300 | [1, 300] | Foreign key referencing `user.csv(User_Id)`. |
-| **`Place_Id`** | `int64` | INTEGER | 0 (0.0%) | 437 | [1, 437] | Foreign key referencing `tourism_with_id.csv(Place_Id)`. |
-| **`Place_Ratings`**| `int64` | SMALLINT | 0 (0.0%) | 5 | {1: 17.1%, 2: 20.7%, 3: 21.0%, 4: 21.1%, 5: 20.2%} | **Target variable.** Explicit user satisfaction rating. |
-
----
-
-### 2.3 User Demographics (`user.csv`)
-
-| Column Name | Inferred Type | Storage Type | Null Count (%) | Unique Values | Domain & Value Range | Description & Notes |
-| :--- | :--- | :--- | :---: | :---: | :--- | :--- |
-| **`User_Id`** | `int64` | INTEGER | 0 (0.0%) | 300 | [1, 300] | Primary Key. User identity index. |
-| **`Location`** | `object` / `string` | VARCHAR(100) | 0 (0.0%) | 28 | Cities (Semarang, Bekasi, Jakarta, etc.) | User hometown/origin city. |
-| **`Age`** | `int64` | SMALLINT | 0 (0.0%) | 23 | [18, 40], Mean = 28.7 years | User age in years. |
-
----
-
-## 3. Data Quality Findings & Day 3 Remediation Strategy
-
-1. **Junk Columns:** `Unnamed: 11` (100% missing) and `Unnamed: 12` (redundant numeric index) must be pruned during ingestion.
-2. **Missing `Time_Minutes` (53.1% missing):**
-   - Imputation strategy: Median duration partitioned by `Category` (e.g. amusement parks have longer typical visits than viewpoints).
-3. **Duplicate Interactions (79 records in `tourism_rating.csv`):**
-   - Exactly 79 duplicate `(User_Id, Place_Id)` rating events exist.
-   - Remediation: Aggregate duplicate entries by computing the arithmetic mean rating per `(User_Id, Place_Id)` pair, ensuring a single deterministic target score.
-4. **Referential Integrity:** 100% verified. Every interaction maps to an existing attraction and user.
+1. **Feature Parsing:**
+   - Parse `ideal_durations` from JSON strings to multi-label binary indicators (`duration_weekend`, `duration_short`, `duration_week`, `duration_long`).
+   - Extract mean seasonal temperatures from `avg_temp_monthly` to support seasonal group trip planning.
+2. **Categorical Encoding:**
+   - Ordinal mapping for `budget_level`: `{'Budget': 1, 'Mid-range': 2, 'Luxury': 3}`.
+   - One-Hot encoding for `region`.
+3. **Thematic Vector Normalization:**
+   - Standardize the 9 thematic scores into a normalized destination feature vector $\mathbf{d}_j \in [0, 1]^9$.
+4. **Group Matching Utility Formulation:**
+   - Map user preference survey Likert ratings directly against the 9 normalized thematic dimensions to compute pairwise cosine affinity and budget compatibility decay functions.

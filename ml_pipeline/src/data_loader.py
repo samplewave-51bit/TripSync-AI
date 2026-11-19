@@ -1,36 +1,23 @@
 """
-TripSync AI - Data Acquisition Pipeline
-Downloads, verifies, and stores the Tourism Destination & Attraction Benchmark Dataset.
-License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) / ODbL
+TripSync AI - Global Dataset Acquisition Pipeline
+Downloads, verifies, and stores the Worldwide Travel Cities (Ratings and Climate) Dataset.
+Scope: 560 cities across 167 countries with thematic ratings, budget tiers, durations, and coordinates.
 """
 
 import hashlib
 import os
+import shutil
 from pathlib import Path
-from typing import Dict, List
-import requests
+from typing import Dict
+import kagglehub
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data" / "raw"
-
-# Primary and fallback mirror URLs for raw real-world CSV files
-DATASET_SOURCES: Dict[str, List[str]] = {
-    "tourism_with_id.csv": [
-        "https://raw.githubusercontent.com/halowisata/ViVe-Machine-Learning-Flask/main/data/raw/tourism_with_id.csv",
-        "https://raw.githubusercontent.com/Tar-ive/Travel-Recommendation-Model-/main/tourism_with_id.csv",
-    ],
-    "tourism_rating.csv": [
-        "https://raw.githubusercontent.com/halowisata/ViVe-Machine-Learning-Flask/main/data/raw/tourism_rating.csv",
-        "https://raw.githubusercontent.com/Tar-ive/Travel-Recommendation-Model-/main/tourism_rating.csv",
-    ],
-    "user.csv": [
-        "https://raw.githubusercontent.com/halowisata/ViVe-Machine-Learning-Flask/main/data/raw/user.csv",
-        "https://raw.githubusercontent.com/Tar-ive/Travel-Recommendation-Model-/main/user.csv",
-    ],
-}
+TARGET_FILE = DATA_DIR / "worldwide_travel_cities.csv"
+DATASET_SLUG = "furkanima/worldwide-travel-cities-ratings-and-climate"
 
 
 def compute_sha256(filepath: Path) -> str:
-    """Computes SHA-256 hash of a file for integrity tracking."""
+    """Computes SHA-256 hash of a file for cryptographic integrity."""
     sha256 = hashlib.sha256()
     with open(filepath, "rb") as f:
         while chunk := f.read(8192):
@@ -38,47 +25,42 @@ def compute_sha256(filepath: Path) -> str:
     return sha256.hexdigest()
 
 
-def download_file(filename: str, urls: List[str], target_dir: Path) -> Path:
-    """Downloads a file from mirror URLs with fallback support."""
-    target_path = target_dir / filename
-    target_dir.mkdir(parents=True, exist_ok=True)
+def acquire_dataset() -> Dict[str, any]:
+    """Acquires the global travel cities dataset via kagglehub or verifies existing file."""
+    print("=" * 70)
+    print("TRIPSYNC AI: WORLDWIDE TRAVEL CITIES DATASET ACQUISITION (GATE 1)")
+    print("=" * 70)
 
-    for url in urls:
-        print(f"Attempting download for '{filename}' from {url}...")
-        try:
-            response = requests.get(url, timeout=30)
-            if response.status_code == 200 and len(response.content) > 0:
-                with open(target_path, "wb") as f:
-                    f.write(response.content)
-                file_size_kb = target_path.stat().st_size / 1024
-                file_hash = compute_sha256(target_path)
-                print(f"[SUCCESS] Downloaded '{filename}' ({file_size_kb:.2f} KB) - SHA-256: {file_hash[:16]}...")
-                return target_path
-            else:
-                print(f"[WARN] Non-200 response ({response.status_code}) from {url}")
-        except Exception as e:
-            print(f"[ERROR] Failed to fetch from {url}: {e}")
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
 
-    raise RuntimeError(f"Failed to download {filename} from all available sources.")
+    if not TARGET_FILE.exists() or TARGET_FILE.stat().st_size == 0:
+        print(f"Fetching dataset '{DATASET_SLUG}' via kagglehub...")
+        download_path = Path(kagglehub.dataset_download(DATASET_SLUG))
+        # Find csv in the downloaded folder
+        csv_files = list(download_path.glob("*.csv"))
+        if not csv_files:
+            raise FileNotFoundError(f"No CSV file found in downloaded path: {download_path}")
+        source_csv = csv_files[0]
+        shutil.copyfile(source_csv, TARGET_FILE)
+        print(f"[SUCCESS] Downloaded and moved to {TARGET_FILE}")
+    else:
+        print(f"[INFO] Verified dataset already present at {TARGET_FILE}")
 
+    file_size_kb = TARGET_FILE.stat().st_size / 1024
+    file_hash = compute_sha256(TARGET_FILE)
 
-def acquire_all_datasets() -> Dict[str, Dict]:
-    """Downloads all dataset artifacts and returns metadata."""
-    print("=" * 60)
-    print("TripSync AI: Real-World Dataset Acquisition (Gate 1)")
-    print("=" * 60)
-    manifest = {}
-    for filename, urls in DATASET_SOURCES.items():
-        file_path = download_file(filename, urls, DATA_DIR)
-        manifest[filename] = {
-            "path": str(file_path),
-            "size_bytes": file_path.stat().st_size,
-            "sha256": compute_sha256(file_path),
-        }
-    print("=" * 60)
-    print("All dataset artifacts successfully acquired and verified.")
-    return manifest
+    print(f"  Target File:     {TARGET_FILE.name}")
+    print(f"  File Size:       {file_size_kb:.2f} KB")
+    print(f"  SHA-256 Hash:    {file_hash}")
+    print("=" * 70)
+
+    return {
+        "filename": TARGET_FILE.name,
+        "path": str(TARGET_FILE),
+        "size_bytes": TARGET_FILE.stat().st_size,
+        "sha256": file_hash,
+    }
 
 
 if __name__ == "__main__":
-    acquire_all_datasets()
+    acquire_dataset()

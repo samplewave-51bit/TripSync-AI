@@ -71,67 +71,67 @@
 
 ---
 
-## Day 2: Dataset Acquisition, Integrity Verification & Quality Inspection
+## Day 2: Global Dataset Acquisition, Verification & Worldwide Quality Inspection
 - **Date:** 2026-11-20
 - **Development Day:** Day 2 of 35 (Phase 1: Milestone 1 MVP)
 
 ### 1. Objectives
-- Acquire real-world Tourism Destination & Attraction Benchmark Dataset into `ml_pipeline/data/raw/`.
-- Verify licensing (CC BY-SA 4.0 / ODbL) and compute SHA-256 cryptographic checksums.
-- Create automated data loader script with mirror fallback mechanism.
-- Execute structural inspection of dimensions, schema, data types, null counts, and duplicate records.
-- Validate relational referential integrity across users, places, and interactions.
+- Acquire real-world **Worldwide Travel Cities (Ratings and Climate)** dataset into `ml_pipeline/data/raw/`.
+- Ensure true global coverage across 100+ countries, spanning all continents for the group travel platform.
+- Create automated data loader script with cryptographic checksum verification.
+- Execute structural inspection of dimensions, schema, data types, null counts, and geographic distributions.
+- Validate coordinates, budget tiers, durations, and thematic experience ratings.
 - Produce `ml_pipeline/DATA_DICTIONARY.md` and `ml_pipeline/notebooks/01_data_inspection.ipynb`.
 
 ### 2. Work Completed
-- Built `ml_pipeline/src/data_loader.py` with multi-source download resilience and automated checksum verification.
-- Downloaded and verified all 3 dataset components:
-  - `tourism_with_id.csv` (437 attractions, 13 columns, SHA-256: `f7be2257d5f7007c...`)
-  - `tourism_rating.csv` (10,000 rating interactions, 3 columns, SHA-256: `d2c432924f8dcb7e...`)
-  - `user.csv` (300 users, 3 columns, SHA-256: `118572535a530f11...`)
-- Built `ml_pipeline/src/inspect_data.py` providing automated profiling of null values, duplicates, and category distributions.
-- Identified data quality nuances:
-  - 2 junk export columns (`Unnamed: 11` with 100% missing values; `Unnamed: 12` numeric index artifact).
-  - 232 missing values (53.1%) in `Time_Minutes` duration column.
-  - 79 duplicate `(User_Id, Place_Id)` rating events.
-  - Confirmed 100% complete and valid geographic coordinates (`Lat`: [-8.1979, 1.0789], `Long`: [103.9314, 112.8217]).
-  - Confirmed 100% referential integrity with zero orphan records.
+- Integrated `kagglehub` data acquisition engine in `ml_pipeline/src/data_loader.py`.
+- Downloaded and verified `worldwide_travel_cities.csv` (560 destinations, 19 columns, 478.87 KB).
+- Replaced localized regional dataset with this verified worldwide dataset.
+- Built `ml_pipeline/src/inspect_data.py` profiling global destinations, coordinates, and thematic ratings.
+- Key inspection findings:
+  - **Global Reach:** 560 cities across 167 countries (Europe: 31.6%, North America: 18.6%, Asia: 17.7%, Africa: 11.2%, South America: 9.8%, Oceania: 9.1%, Middle East: 2.0%).
+  - **Data Completeness:** 100% complete across all 19 features (0 null values, 0 duplicate records).
+  - **Geospatial Coordinates:** Latitude range [-54.8073, 78.7199], Longitude range [-175.2018, 179.3329]. Ready for Leaflet.js interactive maps.
+  - **Thematic Vectors:** 9 experience rating scores on a 1.0–5.0 scale (`culture`, `adventure`, `nature`, `beaches`, `nightlife`, `cuisine`, `wellness`, `urban`, `seclusion`).
+  - **Planning Logistics:** Budget levels (`Mid-range`: 60.5%, `Budget`: 25.9%, `Luxury`: 13.6%), and ideal duration intervals.
 - Authored interactive inspection notebook `ml_pipeline/notebooks/01_data_inspection.ipynb`.
 - Authored comprehensive schema specification `ml_pipeline/DATA_DICTIONARY.md`.
+- Updated `docs/DATASET_RESEARCH.md`.
 
 ### 3. Files Created or Modified
-- `ml_pipeline/src/data_loader.py` (Automated dataset acquisition and integrity verification)
-- `ml_pipeline/src/inspect_data.py` (Dataset profiling and referential integrity validator)
+- `ml_pipeline/data/raw/worldwide_travel_cities.csv` (Primary global dataset)
+- `ml_pipeline/src/data_loader.py` (Automated global dataset loader)
+- `ml_pipeline/src/inspect_data.py` (Global dataset profiler and coordinate validator)
 - `ml_pipeline/notebooks/01_data_inspection.ipynb` (Interactive Jupyter inspection notebook)
-- `ml_pipeline/DATA_DICTIONARY.md` (Formal schema, types, distributions, and remediation guidance)
-- `DEVELOPMENT_LOG.md` (Updated with Day 2 progress)
+- `ml_pipeline/DATA_DICTIONARY.md` (Formal schema, types, and distributions)
+- `docs/DATASET_RESEARCH.md` (Updated comparative research report)
+- `DEVELOPMENT_LOG.md` (Updated with revised Day 2 progress)
 
 ### 4. Technical Decisions
-- **Deduplication Strategy:** In Day 3 cleaning, the 79 duplicate interactions in `tourism_rating.csv` will be aggregated by arithmetic mean to produce a single deterministic target score per `(User_Id, Place_Id)`.
-- **Duration Imputation:** For the 53.1% missing `Time_Minutes`, median category-specific duration will be used to reflect realistic activity pacing.
-- **Raw Data Isolation:** Raw CSVs are tracked under `ml_pipeline/data/raw/` with gitignore rules preserving lightweight execution while keeping scripts completely reproducible.
+- **Global Architecture:** Pivoted to a global destination catalog (560 cities across 167 countries) to fulfill the true vision of TripSync AI as a worldwide collaborative travel platform.
+- **Data Completeness:** Selected a dataset with 0 nulls across all planning features, eliminating fragile heuristic imputation.
+- **Lightweight Storage:** Total raw dataset is 478 KB, guaranteeing that production memory consumption remains well below the Render 512 MB RAM ceiling.
 
 ### 5. Problems Encountered
-- Primary mirror for `tourism_with_id.csv` returned HTTP 404.
+- Initial regional dataset was localized to one country (Java, Indonesia), which did not fulfill the user requirement for worldwide travel planning.
 
 ### 6. Solutions Implemented
-- The automated data loader utilized secondary verified mirror URLs, completing all downloads with zero manual intervention.
+- Researched, downloaded, and verified the Worldwide Travel Cities dataset, establishing an authentic global destination catalog spanning 167 countries.
 
 ### 7. Tests Performed
 - Executed `ml_pipeline/src/data_loader.py` with exit code 0.
-- Executed `ml_pipeline/src/inspect_data.py` confirming dimensions (437 places, 10,000 ratings, 300 users) and referential integrity assertions.
+- Executed `ml_pipeline/src/inspect_data.py` validating 560 cities, 167 countries, and 0 nulls.
 
 ### 8. Git Commit Hash
-- `6f8715b607c812c68d263c2de130ae8ad662ebdb` (Commit message: `data: acquire and inspect travel dataset`)
+- `81131aea3d67c4f91c0697b4976748f6c14d7db5` (Commit message: `data: acquire and inspect global worldwide travel dataset`)
 
 ### 9. Remaining Tasks
-- None for Day 2. Quality Gate 1 fully satisfied.
+- None for Day 2. Quality Gate 1 fully satisfied for the global scope.
 
 ### 10. Next Day's Objectives (Day 3)
 - Implement `ml_pipeline/src/preprocessing.py`.
-- Handle missing values (prune junk columns, impute `Time_Minutes` by category median).
-- Deduplicate `tourism_rating.csv` interactions.
-- Encode categorical features (`Category`, `City`, `Location`).
-- Standardize and scale numerical features (`Price`, `Rating`, `Time_Minutes`, `Age`).
-- Generate clean, leakage-free train/validation/test splits.
-- Save cleaned datasets into `ml_pipeline/data/processed/`.
+- Parse `ideal_durations` and seasonal temperatures from JSON fields.
+- Encode categorical variables (`region`, `country`, `budget_level`).
+- Standardize and scale numerical thematic vectors.
+- Generate reproducible train/validation/test splits.
+- Save cleaned datasets in `ml_pipeline/data/processed/`.
