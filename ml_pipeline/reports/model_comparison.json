@@ -1,0 +1,321 @@
+{
+  "champion_model": "Ridge Regression",
+  "selection_rationale": "Ridge Regression achieved superior test regression accuracy (RMSE=0.0001) with perfect ranking quality (NDCG@5=1.0000) and ultra-low inference latency (p95=0.30ms), fitting comfortably within the 512 MB Render free-tier RAM budget.",
+  "models": {
+    "Ridge Regression": {
+      "parameters": {
+        "alpha": 0.01
+      },
+      "validation": {
+        "rmse": 6.0357946759737135e-05,
+        "mae": 4.9928927080582035e-05,
+        "r2": 0.9999999841777009,
+        "ndcg_at_5": 1.0,
+        "precision_at_5": 1.0,
+        "ndcg_at_10": 1.0,
+        "precision_at_10": 1.0
+      },
+      "test": {
+        "rmse": 5.498135706769365e-05,
+        "mae": 4.441385084880736e-05,
+        "r2": 0.9999999851349344,
+        "ndcg_at_5": 1.0,
+        "precision_at_5": 1.0,
+        "ndcg_at_10": 1.0,
+        "precision_at_10": 1.0
+      },
+      "operations": {
+        "train_time_ms": 6.33,
+        "inference_p50_ms": 0.192,
+        "inference_p95_ms": 0.301,
+        "model_size_kb": 0.67
+      },
+      "archetype_slices": {
+        "Heritage Lover": {
+          "rmse": 0.0,
+          "mae": 0.0,
+          "ndcg_at_5": 1.0,
+          "precision_at_5": 1.0
+        },
+        "Nature Explorer": {
+          "rmse": 0.0,
+          "mae": 0.0,
+          "ndcg_at_5": 1.0,
+          "precision_at_5": 1.0
+        },
+        "Adventure Junkie": {
+          "rmse": 0.0001,
+          "mae": 0.0001,
+          "ndcg_at_5": 1.0,
+          "precision_at_5": 1.0
+        },
+        "Urban Explorer": {
+          "rmse": 0.0001,
+          "mae": 0.0001,
+          "ndcg_at_5": 1.0,
+          "precision_at_5": 1.0
+        },
+        "Balanced Explorer": {
+          "rmse": 0.0001,
+          "mae": 0.0,
+          "ndcg_at_5": 1.0,
+          "precision_at_5": 1.0
+        }
+      }
+    },
+    "Random Forest": {
+      "parameters": {
+        "n_estimators": 80,
+        "max_depth": 15,
+        "min_samples_split": 4
+      },
+      "validation": {
+        "rmse": 0.016928306125452288,
+        "mae": 0.00911370485072261,
+        "r2": 0.9987554060590701,
+        "ndcg_at_5": 0.9990844423281736,
+        "precision_at_5": 1.0,
+        "ndcg_at_10": 0.9993639881987493,
+        "precision_at_10": 1.0
+      },
+      "test": {
+        "rmse": 0.015088550723065607,
+        "mae": 0.009138662651073786,
+        "r2": 0.998880482275033,
+        "ndcg_at_5": 0.9999189252965701,
+        "precision_at_5": 1.0,
+        "ndcg_at_10": 0.9999423563357479,
+        "precision_at_10": 1.0
+      },
+      "operations": {
+        "train_time_ms": 1765.97,
+        "inference_p50_ms": 49.982,
+        "inference_p95_ms": 66.432,
+        "model_size_kb": 67294.19
+      },
+      "archetype_slices": {
+        "Heritage Lover": {
+          "rmse": 0.0176,
+          "mae": 0.013,
+          "ndcg_at_5": 1.0,
+          "precision_at_5": 1.0
+        },
+        "Nature Explorer": {
+          "rmse": 0.0139,
+          "mae": 0.0076,
+          "ndcg_at_5": 0.9999,
+          "precision_at_5": 1.0
+        },
+        "Adventure Junkie": {
+          "rmse": 0.0151,
+          "mae": 0.0075,
+          "ndcg_at_5": 1.0,
+          "precision_at_5": 1.0
+        },
+        "Urban Explorer": {
+          "rmse": 0.0161,
+          "mae": 0.0108,
+          "ndcg_at_5": 0.9999,
+          "precision_at_5": 1.0
+        },
+        "Balanced Explorer": {
+          "rmse": 0.0142,
+          "mae": 0.0083,
+          "ndcg_at_5": 1.0,
+          "precision_at_5": 1.0
+        }
+      }
+    },
+    "LightGBM": {
+      "parameters": {
+        "n_estimators": 120,
+        "max_depth": 8,
+        "learning_rate": 0.1,
+        "num_leaves": 63
+      },
+      "validation": {
+        "rmse": 0.013797335497161825,
+        "mae": 0.00905765480841417,
+        "r2": 0.9991732177890118,
+        "ndcg_at_5": 0.9999850975166377,
+        "precision_at_5": 1.0,
+        "ndcg_at_10": 0.9999446066965815,
+        "precision_at_10": 1.0
+      },
+      "test": {
+        "rmse": 0.01648606333453046,
+        "mae": 0.010795953987029056,
+        "r2": 0.9986634972781497,
+        "ndcg_at_5": 0.9999290724412012,
+        "precision_at_5": 1.0,
+        "ndcg_at_10": 0.9998984356261595,
+        "precision_at_10": 1.0
+      },
+      "operations": {
+        "train_time_ms": 659.97,
+        "inference_p50_ms": 2.743,
+        "inference_p95_ms": 4.341,
+        "model_size_kb": 691.05
+      },
+      "archetype_slices": {
+        "Heritage Lover": {
+          "rmse": 0.0251,
+          "mae": 0.0184,
+          "ndcg_at_5": 1.0,
+          "precision_at_5": 1.0
+        },
+        "Nature Explorer": {
+          "rmse": 0.0143,
+          "mae": 0.0089,
+          "ndcg_at_5": 0.9999,
+          "precision_at_5": 1.0
+        },
+        "Adventure Junkie": {
+          "rmse": 0.0119,
+          "mae": 0.0082,
+          "ndcg_at_5": 1.0,
+          "precision_at_5": 1.0
+        },
+        "Urban Explorer": {
+          "rmse": 0.0154,
+          "mae": 0.0106,
+          "ndcg_at_5": 0.9999,
+          "precision_at_5": 1.0
+        },
+        "Balanced Explorer": {
+          "rmse": 0.0134,
+          "mae": 0.0094,
+          "ndcg_at_5": 1.0,
+          "precision_at_5": 1.0
+        }
+      }
+    },
+    "HistGradientBoosting": {
+      "parameters": {
+        "max_iter": 150,
+        "max_depth": 10,
+        "learning_rate": 0.1
+      },
+      "validation": {
+        "rmse": 0.015302123498190738,
+        "mae": 0.010967922021323998,
+        "r2": 0.998983039511899,
+        "ndcg_at_5": 0.9999731062888665,
+        "precision_at_5": 1.0,
+        "ndcg_at_10": 0.999945686464732,
+        "precision_at_10": 1.0
+      },
+      "test": {
+        "rmse": 0.017270706629233735,
+        "mae": 0.011915561437385893,
+        "r2": 0.998533249875453,
+        "ndcg_at_5": 0.9999153258101713,
+        "precision_at_5": 1.0,
+        "ndcg_at_10": 0.9998133186651862,
+        "precision_at_10": 1.0
+      },
+      "operations": {
+        "train_time_ms": 806.69,
+        "inference_p50_ms": 3.228,
+        "inference_p95_ms": 7.657,
+        "model_size_kb": 547.4
+      },
+      "archetype_slices": {
+        "Heritage Lover": {
+          "rmse": 0.0287,
+          "mae": 0.0225,
+          "ndcg_at_5": 1.0,
+          "precision_at_5": 1.0
+        },
+        "Nature Explorer": {
+          "rmse": 0.0139,
+          "mae": 0.0092,
+          "ndcg_at_5": 0.9999,
+          "precision_at_5": 1.0
+        },
+        "Adventure Junkie": {
+          "rmse": 0.0169,
+          "mae": 0.0134,
+          "ndcg_at_5": 1.0,
+          "precision_at_5": 1.0
+        },
+        "Urban Explorer": {
+          "rmse": 0.0128,
+          "mae": 0.0085,
+          "ndcg_at_5": 0.9999,
+          "precision_at_5": 1.0
+        },
+        "Balanced Explorer": {
+          "rmse": 0.0133,
+          "mae": 0.0108,
+          "ndcg_at_5": 0.9999,
+          "precision_at_5": 1.0
+        }
+      }
+    },
+    "CB-CF Hybrid": {
+      "parameters": {
+        "w_cb": 1.58,
+        "w_budget": 0.99,
+        "w_pacing": 0.6,
+        "w_prior": 0.16
+      },
+      "validation": {
+        "rmse": 0.005288030032231005,
+        "mae": 0.0042804556315689645,
+        "r2": 0.9998785525221109,
+        "ndcg_at_5": 1.0,
+        "precision_at_5": 1.0,
+        "ndcg_at_10": 1.0,
+        "precision_at_10": 1.0
+      },
+      "test": {
+        "rmse": 0.005274081967985302,
+        "mae": 0.0041041274890924314,
+        "r2": 0.9998632177731104,
+        "ndcg_at_5": 1.0,
+        "precision_at_5": 1.0,
+        "ndcg_at_10": 1.0,
+        "precision_at_10": 1.0
+      },
+      "operations": {
+        "train_time_ms": 2.25,
+        "inference_p50_ms": 0.762,
+        "inference_p95_ms": 2.204,
+        "model_size_kb": 0.24
+      },
+      "archetype_slices": {
+        "Heritage Lover": {
+          "rmse": 0.0069,
+          "mae": 0.0059,
+          "ndcg_at_5": 1.0,
+          "precision_at_5": 1.0
+        },
+        "Nature Explorer": {
+          "rmse": 0.0058,
+          "mae": 0.0047,
+          "ndcg_at_5": 1.0,
+          "precision_at_5": 1.0
+        },
+        "Adventure Junkie": {
+          "rmse": 0.0047,
+          "mae": 0.0033,
+          "ndcg_at_5": 1.0,
+          "precision_at_5": 1.0
+        },
+        "Urban Explorer": {
+          "rmse": 0.004,
+          "mae": 0.0032,
+          "ndcg_at_5": 1.0,
+          "precision_at_5": 1.0
+        },
+        "Balanced Explorer": {
+          "rmse": 0.0027,
+          "mae": 0.002,
+          "ndcg_at_5": 1.0,
+          "precision_at_5": 1.0
+        }
+      }
+    }
+  }
+}

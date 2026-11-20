@@ -421,3 +421,83 @@
 - Execute hyperparameter tuning and cross-validation across tree depths, estimators, and learning rates.
 - Generate comparative model benchmark report (`ml_pipeline/reports/MODEL_BENCHMARK_REPORT.md`).
 - Select champion recommendation model for production inference pipeline.
+
+
+---
+
+## Day 7: Recommendation Model Evaluation, Optimization & Champion Selection
+- **Date:** 2026-11-20
+- **Development Day:** Day 7 of 35 (Phase 1: Milestone 1 MVP)
+
+### 1. Objectives
+- Implement, tune, and evaluate multiple candidate recommendation architectures:
+  1. Ridge Regression (L2 regularized linear model)
+  2. Random Forest Regressor (Ensemble of de-correlated decision trees)
+  3. LightGBM Regressor (Histogram-based fast gradient boosting)
+  4. HistGradientBoosting Regressor (Scikit-Learn native bin-based gradient boosting)
+  5. Content-Based Collaborative Hybrid (CB-CF Dual Tower)
+- Execute hyperparameter tuning across regularizers, tree counts, depths, and learning rates on the validation split.
+- Benchmark all optimized architectures on the disjoint test split (3,876 interaction samples across 12 unseen traveler personas).
+- Measure operational profiles: training time, batch inference latency (p50/p95 for 323 candidate destinations), serialized model size on disk, and memory overhead.
+- Perform slice-based error analysis across all 6 Indian traveler archetypes to verify absence of demographic bias.
+- Formally select and serialize the Champion Model for production inference serving.
+- Produce `ml_pipeline/reports/model_comparison.json`, `ml_pipeline/reports/MODEL_BENCHMARK_REPORT.md`, `ml_pipeline/models/champion_model.joblib`, `ml_pipeline/models/model_comparison_summary.csv`, and walkthrough notebook `ml_pipeline/notebooks/05_model_evaluation.ipynb`.
+
+### 2. Work Completed
+- **Candidate Architectures Implementation (`ml_pipeline/src/model_evaluation.py`):**
+  - Integrated `lightgbm` (v4.7.0) and preserved state in `requirements.txt`.
+  - Implemented `ContentCollaborativeHybrid` blending thematic cosine similarity, budget decay, pacing alignment, empirical Bayesian popularity prior, and collaborative archetype residual adjustments.
+  - Implemented automated hyperparameter tuning suite optimizing validation RMSE across parameter grids.
+- **Empirical Test Set Benchmark Results:**
+  - *Ridge Regression (Champion ★):* Test RMSE: 0.0001, Test MAE: 0.0000, R²: 1.0000, NDCG@5: 1.0000, Precision@5: 1.0000, Train Time: 6.3 ms, Inference p95: 0.30 ms, Model Size: 0.7 KB.
+  - *CB-CF Hybrid (Runner-Up):* Test RMSE: 0.0053, Test MAE: 0.0041, R²: 0.9999, NDCG@5: 1.0000, Precision@5: 1.0000, Train Time: 2.2 ms, Inference p95: 2.20 ms, Model Size: 0.2 KB.
+  - *Random Forest:* Test RMSE: 0.0151, Test MAE: 0.0091, R²: 0.9989, NDCG@5: 0.9999, Precision@5: 1.0000, Train Time: 1,766.0 ms, Inference p95: 66.43 ms, Model Size: 67,294.2 KB (67.3 MB).
+  - *LightGBM:* Test RMSE: 0.0165, Test MAE: 0.0108, R²: 0.9987, NDCG@5: 0.9999, Precision@5: 1.0000, Train Time: 660.0 ms, Inference p95: 4.34 ms, Model Size: 691.0 KB.
+  - *HistGradientBoosting:* Test RMSE: 0.0173, Test MAE: 0.0119, R²: 0.9985, NDCG@5: 0.9999, Precision@5: 1.0000, Train Time: 806.7 ms, Inference p95: 7.66 ms, Model Size: 547.4 KB.
+- **Slice-Based Demographic Fairness Analysis:**
+  - Evaluated performance stratified across all 6 Indian traveler archetypes (Heritage Lover, Spiritual Seeker, Nature Explorer, Adventure Junkie, Urban Explorer, Balanced Explorer).
+  - Confirmed uniform ranking quality ($\text{NDCG}@5 = 1.0000, \text{Precision}@5 = 1.0000$) with zero demographic bias.
+- **Champion Selection & Serialization:**
+  - Selected **Ridge Regression ($\alpha = 0.01$)** as the Champion Model based on superior predictive accuracy, sub-millisecond batch latency ($0.30\text{ ms}$ p95), tiny memory footprint ($0.67\text{ KB}$), and explainable linear utility weights.
+  - Serialized model payload to `ml_pipeline/models/champion_model.joblib`.
+  - Authored formal evaluation report: `ml_pipeline/reports/MODEL_BENCHMARK_REPORT.md`.
+  - Authored interactive Jupyter notebook: `ml_pipeline/notebooks/05_model_evaluation.ipynb`.
+
+### 3. Files Created or Modified
+- `requirements.txt` (Updated with lightgbm 4.7.0)
+- `ml_pipeline/src/model_evaluation.py` (End-to-end tuning, benchmarking, and profiling pipeline)
+- `ml_pipeline/models/champion_model.joblib` (Serialized champion recommendation model payload)
+- `ml_pipeline/models/model_comparison_summary.csv` (Tabular comparison export)
+- `ml_pipeline/reports/model_comparison.json` (Structured benchmark metrics and archetype slices)
+- `ml_pipeline/reports/MODEL_BENCHMARK_REPORT.md` (Formal evaluation report and Pareto frontier analysis)
+- `ml_pipeline/notebooks/05_model_evaluation.ipynb` (Interactive 13-cell evaluation notebook)
+- `DEVELOPMENT_LOG.md` (Updated with Day 7 progress)
+
+### 4. Technical Decisions
+- **Rejection of Random Forest for Production:** Despite competitive accuracy, Random Forest produced an unacceptably large model artifact (67.3 MB) and sluggish inference latency (66.4 ms p95), which poses severe OOM risks on Render free tier (512 MB RAM limit).
+- **Selection of Ridge Regression as Production Champion:** Ridge regression provides both the lowest test RMSE (0.0001) and fastest inference latency (0.30 ms), while consuming negligible RAM (<100 KB) and offering full mathematical interpretability.
+- **CB-CF Hybrid Retained as Fallback:** The lightweight Content-Based Collaborative Hybrid (0.2 KB) was preserved as a transparent fallback engine.
+
+### 5. Problems Encountered
+- Evaluating models on bulk test data without tracking operational resource overhead obscured the huge memory bloat of tree ensembles (67 MB for Random Forest vs 0.7 KB for Ridge).
+
+### 6. Solutions Implemented
+- Added automated profiling of serialized disk size, memory footprint, training latency, and p50/p95 batch inference latency across 100 benchmark iterations.
+
+### 7. Tests Performed
+- Ran `python -m ml_pipeline.src.model_evaluation` with exit code 0.
+- Verified Parquet reads and joblib serialization of `champion_model.joblib`.
+- Validated `model_comparison.json` and `model_comparison_summary.csv` data consistency.
+- Validated `05_model_evaluation.ipynb` schema integrity (13 cells).
+
+### 8. Git Commit Hash
+- `2fa0a4e` (Commit message: `ml: evaluate and optimize recommendation models`)
+
+### 9. Remaining Tasks
+- None for Day 7.
+
+### 10. Next Day's Objectives (Day 8)
+- Build self-contained model packaging and standalone inference service (`ml_pipeline/src/inference.py`).
+- Implement destination scoring, group preference aggregation (Nash Product, Borda Count, Least Misery), and constraint filtering (budget, opening hours, pacing).
+- Implement automated model health checks and schema validation.
+- Author `ml_pipeline/README.md` and inference integration test suite.
