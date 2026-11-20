@@ -77,5 +77,10 @@ desktop.ini
 ml_pipeline/data/raw/*
 !ml_pipeline/data/raw/.gitkeep
 !ml_pipeline/data/raw/*.csv
+# Processed ML data & preprocessor artifacts
 ml_pipeline/data/processed/*
 !ml_pipeline/data/processed/.gitkeep
+!ml_pipeline/data/processed/*.csv
+!ml_pipeline/data/processed/*.parquet
+!ml_pipeline/data/processed/*.json
+!ml_pipeline/data/processed/*.joblib

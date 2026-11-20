@@ -1,0 +1,33 @@
+{
+  "raw_samples": 325,
+  "clean_samples": 323,
+  "train_samples": 258,
+  "val_samples": 32,
+  "test_samples": 33,
+  "features_count": 22,
+  "feature_names": [
+    "time_needed_hrs",
+    "latitude",
+    "longitude",
+    "log_entrance_fee",
+    "log_reviews",
+    "budget_tier_code",
+    "zone_Eastern",
+    "zone_North Eastern",
+    "zone_Northern",
+    "zone_Southern",
+    "zone_Western",
+    "best_time_to_visit_All",
+    "best_time_to_visit_Anytime",
+    "best_time_to_visit_Evening",
+    "best_time_to_visit_Morning",
+    "theme_culture_heritage",
+    "theme_nature_wildlife",
+    "theme_spiritual_religious",
+    "theme_adventure_outdoor",
+    "theme_urban_entertainment",
+    "has_airport_50km",
+    "is_dslr_allowed"
+  ],
+  "preprocessor_path": "C:\\Projects\\TripSync-AI\\ml_pipeline\\data\\processed\\preprocessor.joblib"
+}

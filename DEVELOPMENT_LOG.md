@@ -136,3 +136,72 @@
 - Numerical scaling: Standardize `time_needed_hrs`, `rating`, `entrance_fee_inr`, `reviews_lakhs`.
 - Create train/val/test splits without data leakage.
 - Save clean datasets in `ml_pipeline/data/processed/`.
+
+
+---
+
+## Day 3: Data Cleaning, Macro-Thematic Feature Engineering & Leakage-Free Preprocessing
+- **Date:** 2026-11-20
+- **Development Day:** Day 3 of 35 (Phase 1: Milestone 1 MVP)
+
+### 1. Objectives
+- Implement reproducible preprocessing pipeline script (`ml_pipeline/src/preprocessing.py`).
+- Deduplicate duplicate records and normalize string inconsistencies.
+- Engineer 5-dimensional macro-thematic preference vectors for group survey matching.
+- Apply log transformations to high-skew financial and popularity distributions.
+- Partition dataset into 80% Train, 10% Validation, 10% Test without data leakage.
+- Fit ColumnTransformer strictly on training data and serialize preprocessor pipeline artifact (`preprocessor.joblib`).
+- Produce `ml_pipeline/DATA_QUALITY_REPORT.md` and `ml_pipeline/notebooks/02_preprocessing.ipynb`.
+
+### 2. Work Completed
+- Built `ml_pipeline/src/preprocessing.py` implementing end-to-end cleaning and feature engineering.
+- Eliminated 2 duplicate attraction records (`Thiksey Monastery`, `Ramanathaswamy Temple`), establishing a verified catalog of 323 distinct destinations.
+- Normalized state naming inconsistencies (e.g. `Maharastra` -> `Maharashtra`).
+- Engineered 5 macro-thematic binary/affinity vectors: `culture_heritage`, `nature_wildlife`, `spiritual_religious`, `adventure_outdoor`, `urban_entertainment`.
+- Applied $\log(1 + x)$ transformations to `entrance_fee_inr` and `reviews_lakhs`, reducing skewness and stabilizing scaling.
+- Partitioned dataset into 258 train samples (79.9%), 32 validation samples (9.9%), and 33 test samples (10.2%) using random seed 42.
+- Fitted Scikit-Learn `ColumnTransformer` exclusively on the training split, generating 22 model features.
+- Exported Parquet split files (`train.parquet`, `val.parquet`, `test.parquet`) and clean CSV (`places_cleaned.csv`).
+- Serialized `preprocessor.joblib` and `pipeline_metadata.json`.
+- Authored interactive notebook `ml_pipeline/notebooks/02_preprocessing.ipynb` and `ml_pipeline/DATA_QUALITY_REPORT.md`.
+
+### 3. Files Created or Modified
+- `ml_pipeline/src/preprocessing.py` (End-to-end preprocessing pipeline)
+- `ml_pipeline/notebooks/02_preprocessing.ipynb` (Interactive preprocessing inspection notebook)
+- `ml_pipeline/DATA_QUALITY_REPORT.md` (Detailed quality audit, skewness mitigation, and split verification)
+- `ml_pipeline/data/processed/places_cleaned.csv` (Clean reference catalog)
+- `ml_pipeline/data/processed/train.parquet` (80% training split)
+- `ml_pipeline/data/processed/val.parquet` (10% validation split)
+- `ml_pipeline/data/processed/test.parquet` (10% test split)
+- `ml_pipeline/data/processed/preprocessor.joblib` (Fitted ColumnTransformer pipeline)
+- `ml_pipeline/data/processed/pipeline_metadata.json` (Pipeline metadata and feature schema)
+- `.gitignore` (Updated to track processed Parquet, CSV, JSON, and Joblib artifacts)
+- `DEVELOPMENT_LOG.md` (Updated with Day 3 progress)
+
+### 4. Technical Decisions
+- **Macro-Thematic Clustering:** Mapped 38 granular types into 5 standardized macro-categories matching user preference survey questions (`Culture`, `Nature`, `Spiritual`, `Adventure`, `Urban`).
+- **Data Leakage Prevention:** Scalers (`MinMaxScaler`, `StandardScaler`) and categorical encoders (`OneHotEncoder`) were fit exclusively on the training split, then applied to validation and test splits.
+- **Log Skewness Correction:** Applied log transformations to compress heavy right-tailed distributions in ticket prices and review counts before standardization.
+
+### 5. Problems Encountered
+- High variance in ticket fees (₹0 to ₹7,500) caused extreme distribution skewness.
+
+### 6. Solutions Implemented
+- Implemented $\log(1 + x)$ transformation coupled with `StandardScaler` to compress outlier influence while preserving ordinal rank.
+
+### 7. Tests Performed
+- Executed `ml_pipeline/src/preprocessing.py` with exit code 0.
+- Verified disjoint sets across Train, Val, and Test splits (0 ID overlap).
+- Tested `places_cleaned.csv` and Parquet artifact read/write roundtrip.
+
+### 8. Git Commit Hash
+- `e3f7c771fe3167f36d00ecdd7c75d22f9219380b` (Commit message: `ml: implement preprocessing pipeline`)
+
+### 9. Remaining Tasks
+- None for Day 3.
+
+### 10. Next Day's Objectives (Day 4)
+- Comprehensive Exploratory Data Analysis (EDA).
+- Statistical analysis of feature correlations and target rating distributions.
+- Generate and save visual distribution charts in `ml_pipeline/reports/figures/`.
+- Create `ml_pipeline/notebooks/03_eda_visualizations.ipynb` and `ml_pipeline/reports/EDA_REPORT.md`.
