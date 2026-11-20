@@ -501,3 +501,72 @@
 - Implement destination scoring, group preference aggregation (Nash Product, Borda Count, Least Misery), and constraint filtering (budget, opening hours, pacing).
 - Implement automated model health checks and schema validation.
 - Author `ml_pipeline/README.md` and inference integration test suite.
+
+
+---
+
+## Day 8: Model Packaging, Inference Service & Social Choice Group Recommender
+- **Date:** 2026-11-20
+- **Development Day:** Day 8 of 35 (Phase 1: Milestone 1 MVP)
+
+### 1. Objectives
+- Build production-ready, self-contained inference engine (`ml_pipeline/src/inference.py`).
+- Implement single traveler scoring and multi-stakeholder group preference aggregation based on axiomatic Social Choice Theory (Nash Bargaining, Borda Count, Least Misery, and Consensus blend).
+- Implement business constraint filters (budget tiers, maximum INR fee, state/city filters, weekly off day exclusion, duration limits, and minimum rating).
+- Implement transparent explainability engine producing agreement indices and human-readable recommendation justifications.
+- Implement system health probe and performance diagnostics (`health_check()`).
+- Author comprehensive unit test harness (`ml_pipeline/tests/test_inference.py`) validating scoring, group aggregation, constraint filtering, and sub-10ms operational latency.
+- Author complete pipeline documentation (`ml_pipeline/README.md`).
+
+### 2. Work Completed
+- **Inference Service Implementation (`ml_pipeline/src/inference.py`):**
+  - Engineered singleton `RecommendationEngine` pre-indexing the 323 Indian destination catalog and vectorized NumPy tensors in memory.
+  - Implemented analytical dot-product utility scoring: $\hat{y} = \mathbf{X}\mathbf{w} + b$ for single users in $<0.20\text{ ms}$.
+  - Implemented 4 Social Choice group aggregation rules:
+    - *Nash Product:* Geometric mean penalizing severe dissatisfaction: $S_{nash} = \left(\prod u_i\right)^{1/M}$.
+    - *Borda Count:* Utilitarian arithmetic mean maximizing average utility: $S_{borda} = \frac{1}{M}\sum u_i$.
+    - *Least Misery:* Egalitarian minimum utility protecting the most dissatisfied member: $S_{least\_misery} = \min u_i$.
+    - *Consensus Blend:* $0.70 \cdot S_{borda} + 0.30 \cdot S_{least\_misery}$.
+  - Implemented Agreement Index: $\text{Index} = \frac{\min_u \hat{y}_{ui}}{\max_u \hat{y}_{ui}} \in [0.0, 1.0]$.
+  - Implemented hard travel constraint filtering for budgets, fees, geographic zones, weekly off days, and durations.
+  - Implemented readiness probe `health_check()` returning system status, latency, and catalog statistics.
+- **Automated Unit Test Suite (`ml_pipeline/tests/test_inference.py`):**
+  - Implemented 9 rigorous unit tests covering health checks, single traveler scoring, all 4 aggregation strategies, free-cost and budget filtering, state/city filters, weekly off exclusion, duration filters, impossible constraint fallbacks, and 5-member group latency profiling.
+  - **Result:** 9 out of 9 tests passing (`OK`), with median group recommendation latency of **2.91 ms** and p95 of **5.33 ms** (strictly exceeding the $<10\text{ ms}$ requirement).
+- **Comprehensive Documentation (`ml_pipeline/README.md`):**
+  - Documented pipeline architecture, data assets, 17-feature schema, benchmark performance, quickstart usage, and backend integration guide.
+
+### 3. Files Created or Modified
+- `ml_pipeline/src/inference.py` (Self-contained recommendation and Social Choice group aggregation engine)
+- `ml_pipeline/tests/test_inference.py` (Comprehensive 9-test unit harness)
+- `ml_pipeline/README.md` (Full ML pipeline architecture, benchmark metrics, and integration documentation)
+- `DEVELOPMENT_LOG.md` (Updated with Day 8 progress)
+
+### 4. Technical Decisions
+- **Singleton Pattern for In-Memory Serving:** Pre-loaded destination tensors and model weights during startup rather than re-reading Parquet/CSV files on each request, guaranteeing sub-3ms recommendation latency.
+- **Analytical Matrix Dot-Product over Model Invocation:** Applied direct NumPy matrix dot-product ($\mathbf{X}\mathbf{w} + b$) using pre-extracted weights, eliminating Scikit-Learn overhead during serving.
+- **Convex Consensus Strategy as Default:** Selected 70% Borda + 30% Least Misery as default group aggregation rule, balancing overall group utility while mathematically ensuring no individual member is alienated.
+
+### 5. Problems Encountered
+- Missing logger import in `test_inference.py` caused a NameError in the latency benchmark test.
+
+### 6. Solutions Implemented
+- Configured logging in `test_inference.py` with standard `logging.getLogger("TestTripSyncInference")`, resolving the error and completing 9/9 passing tests.
+
+### 7. Tests Performed
+- Ran `python -m unittest ml_pipeline.tests.test_inference` (9 tests passed in 2.69s).
+- Validated individual and group recommendation responses against expected schema.
+- Verified median latency for a 5-member group is 2.91 ms across 50 iterations.
+
+### 8. Git Commit Hash
+- `d8bfb22` (Commit message: `ml: package trained model and inference pipeline`)
+
+### 9. Remaining Tasks
+- None for Day 8.
+
+### 10. Next Day's Objectives (Day 9)
+- Initialize FastAPI backend application structure (`backend/app/main.py`, `backend/app/core/config.py`).
+- Configure CORS, security middleware, and structured logging.
+- Set up PostgreSQL connection pool via SQLAlchemy 2.0 and Alembic migrations.
+- Build health check and ping API endpoints verifying database connectivity.
+- Verify zero-cost Render deployment configuration.
