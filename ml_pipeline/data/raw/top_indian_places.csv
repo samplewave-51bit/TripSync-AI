@@ -1,0 +1,326 @@
+place_id,name,zone,state,city,type,time_needed_hrs,rating,entrance_fee_inr,reviews_lakhs,airport_within_50km,weekly_off,significance,dslr_allowed,best_time_to_visit,budget_tier,latitude,longitude
+1,India Gate,Northern,Delhi,Delhi,War Memorial,0.5,4.6,0,2.6,Yes,Open All Days,Historical,Yes,Evening,Budget,28.6139,77.209
+2,Humayun's Tomb,Northern,Delhi,Delhi,Tomb,2.0,4.5,30,0.4,Yes,Open All Days,Historical,Yes,Afternoon,Budget,28.6139,77.209
+3,Akshardham Temple,Northern,Delhi,Delhi,Temple,5.0,4.6,60,0.4,Yes,Open All Days,Religious,No,Afternoon,Mid-range,28.6139,77.209
+4,Waste to Wonder Park,Northern,Delhi,Delhi,Theme Park,2.0,4.1,50,0.27,Yes,Monday,Environmental,Yes,Evening,Budget,28.6139,77.209
+5,Jantar Mantar,Northern,Delhi,Delhi,Observatory,2.0,4.2,15,0.31,Yes,Open All Days,Scientific,Yes,Morning,Budget,28.6139,77.209
+6,Chandni Chowk,Northern,Delhi,Delhi,Market,3.0,4.2,0,0.25,Yes,Sunday,Market,Yes,Afternoon,Budget,28.6139,77.209
+7,Lotus Temple,Northern,Delhi,Delhi,Temple,1.0,4.5,0,0.59,Yes,Monday,Religious,Yes,Evening,Budget,28.6139,77.209
+8,Red Fort,Northern,Delhi,Delhi,Fort,2.0,4.5,35,1.5,Yes,Open All Days,Historical,Yes,Afternoon,Budget,28.6139,77.209
+9,Agrasen ki Baoli,Northern,Delhi,Delhi,Stepwell,1.0,4.2,0,0.41,Yes,Open All Days,Historical,Yes,Afternoon,Budget,28.6139,77.209
+10,Sunder Nursery,Northern,Delhi,Delhi,Park,2.0,4.6,0,0.16,Yes,Open All Days,Botanical,Yes,Afternoon,Budget,28.6139,77.209
+11,Garden of Five Senses,Northern,Delhi,Delhi,Park,2.0,4.1,35,0.23,Yes,Open All Days,Botanical,Yes,Morning,Budget,28.6139,77.209
+12,Lodhi Garden,Northern,Delhi,Delhi,Park,1.0,4.5,0,0.48,Yes,Open All Days,Botanical,Yes,All,Budget,28.6139,77.209
+13,National Gallery of Modern Art,Northern,Delhi,Delhi,Museum,3.0,4.5,20,0.08,Yes,Monday,Artistic,Yes,All,Budget,28.6139,77.209
+14,National Zoological Park,Northern,Delhi,Delhi,Zoo,3.0,4.1,80,0.41,Yes,Friday,Environmental,Yes,All,Mid-range,28.6139,77.209
+15,Qutub Minar,Northern,Delhi,Delhi,Monument,1.0,4.5,35,1.37,Yes,Open All Days,Historical,Yes,Afternoon,Budget,28.6139,77.209
+16,National Science Centre,Northern,Delhi,Delhi,Science,5.0,4.4,70,0.23,Yes,Open All Days,Scientific,Yes,All,Mid-range,28.6139,77.209
+17,Marine Drive,Western,Maharastra,Mumbai,Promenade,2.0,4.5,0,1.5,Yes,Open All Days,Scenic,Yes,Evening,Budget,19.076,72.8777
+18,Gateway of India,Western,Maharastra,Mumbai,Monument,1.0,4.6,0,3.6,Yes,Open All Days,Historical,Yes,All,Budget,19.076,72.8777
+19,Chhatrapati Shivaji Maharaj Vastu Sangrahalaya,Western,Maharastra,Mumbai,Museum,1.0,4.6,500,0.34,Yes,Open All Days,Historical,Yes,All,Mid-range,19.076,72.8777
+20,Sanjay Gandhi National Park,Western,Maharastra,Mumbai,National Park,3.0,4.3,50,0.6,Yes,Monday,Wildlife,Yes,All,Budget,19.076,72.8777
+21,Siddhivinayak Temple,Western,Maharastra,Mumbai,Temple,2.0,4.8,0,1.05,Yes,Open All Days,Religious,No,All,Budget,19.076,72.8777
+22,Mahalaxmi Temple,Western,Maharastra,Mumbai,Temple,1.0,4.7,0,0.33,Yes,Open All Days,Religious,No,All,Budget,19.076,72.8777
+23,Haji Ali Dargah,Western,Maharastra,Mumbai,Religious Shrine,2.0,4.4,0,0.16,Yes,Open All Days,Religious,No,All,Budget,19.076,72.8777
+24,Chowpatty Beach,Western,Maharastra,Mumbai,Beach,2.0,4.3,0,0.05,Yes,Open All Days,Recreational,Yes,Evening,Budget,19.076,72.8777
+25,Essel World,Western,Maharastra,Mumbai,Amusement Park,5.0,4.3,1149,0.27,Yes,Open All Days,Recreational,Yes,All,Luxury,19.076,72.8777
+26,Elephanta Caves,Western,Maharastra,Mumbai,Monument,4.0,4.3,550,0.35,Yes,Open All Days,Historical,Yes,All,Luxury,19.076,72.8777
+27,Imagicaa,Western,Maharastra,Lonavala,Amusement Park,5.0,1.4,1149,0.95,No,Monday,Recreational,Yes,All,Luxury,18.7557,73.4091
+28,Bangalore Palace,Southern,Karnataka,Bangalore,Palace,2.0,4.2,500,0.9,Yes,Monday,Historical,Yes,Morning,Mid-range,12.9716,77.5946
+29,Lalbagh Botanical Garden,Southern,Karnataka,Bangalore,Botanical Garden,1.5,4.4,20,1.5,Yes,Open All Days,Nature,Yes,Evening,Budget,12.9716,77.5946
+30,Cubbon Park,Southern,Karnataka,Bangalore,Park,1.0,4.4,0,1.32,Yes,Open All Days,Nature,Yes,Morning,Budget,12.9716,77.5946
+31,Vidhana Soudha,Southern,Karnataka,Bangalore,Government Building,0.5,4.6,0,0.8,Yes,Open All Days,Architectural,No,Morning,Budget,12.9716,77.5946
+32,ISKCON Temple Bangalore,Southern,Karnataka,Bangalore,Temple,1.0,4.6,0,1.14,Yes,Open All Days,Religious,Yes,Evening,Budget,12.9716,77.5946
+33,Charminar,Southern,Telangana,Hyderabad,Landmark,1.0,4.5,25,2.1,Yes,Friday,Historical,Yes,Morning,Budget,17.385,78.4867
+34,Golconda Fort,Southern,Telangana,Hyderabad,Fort,2.0,4.4,30,1.2,Yes,Open All Days,Historical,Yes,Morning,Budget,17.385,78.4867
+35,Hussain Sagar Lake,Southern,Telangana,Hyderabad,Lake,1.0,4.3,0,0.5,Yes,Open All Days,Scenic,Yes,Evening,Budget,17.385,78.4867
+36,Ramoji Film City,Southern,Telangana,Hyderabad,Film Studio,4.0,4.4,1150,0.45,Yes,Open All Days,Entertainment,Yes,All,Luxury,17.385,78.4867
+37,Salar Jung Museum,Southern,Telangana,Hyderabad,Museum,2.0,4.4,20,0.67,Yes,Open All Days,Historical,Yes,All,Budget,17.385,78.4867
+38,Qutb Shahi Tombs,Southern,Telangana,Hyderabad,Tombs,1.0,4.4,25,0.2,Yes,Open All Days,Historical,Yes,Morning,Budget,17.385,78.4867
+39,Birla Mandir,Southern,Telangana,Hyderabad,Temple,1.0,4.7,0,0.41,Yes,Open All Days,Religious,No,All,Budget,17.385,78.4867
+40,Chowmahalla Palace,Southern,Telangana,Hyderabad,Palace,1.5,4.4,80,0.45,Yes,Open All Days,Historical,Yes,Morning,Mid-range,17.385,78.4867
+41,Nehru Zoological Park,Southern,Telangana,Hyderabad,Zoo,3.0,4.2,50,0.86,Yes,Open All Days,Wildlife,Yes,Morning,Budget,17.385,78.4867
+42,Lumbini Park,Southern,Telangana,Hyderabad,Park,1.0,4.1,20,0.73,Yes,Open All Days,Recreational,Yes,Evening,Budget,17.385,78.4867
+43,Victoria Memorial,Eastern,West Bengal,Kolkata,Museum,1.5,4.6,30,0.73,Yes,Monday,Historical,Yes,Morning,Budget,22.5726,88.3639
+44,Howrah Bridge,Eastern,West Bengal,Kolkata,Bridge,0.5,4.6,0,1.2,Yes,Open All Days,Architectural,No,Anytime,Budget,22.5726,88.3639
+45,Indian Museum,Eastern,West Bengal,Kolkata,Museum,2.0,4.6,50,0.18,Yes,Monday,Historical,Yes,Morning,Budget,22.5726,88.3639
+46,Dakshineswar Kali Temple,Eastern,West Bengal,Kolkata,Temple,1.0,4.7,0,0.82,Yes,Open All Days,Religious,Yes,Morning,Budget,22.5726,88.3639
+47,Kalighat Kali Temple,Eastern,West Bengal,Kolkata,Temple,1.0,4.4,0,0.5,Yes,Open All Days,Religious,Yes,Morning,Budget,22.5726,88.3639
+48,Eden Gardens,Eastern,West Bengal,Kolkata,Cricket Ground,3.0,4.1,2500,0.1,Yes,Open All Days,Sports,Yes,All,Luxury,22.5726,88.3639
+49,Alipore Zoological Gardens,Eastern,West Bengal,Kolkata,Zoo,2.0,4.3,25,0.66,Yes,Open All Days,Wildlife,Yes,Afternoon,Budget,22.5726,88.3639
+50,Science City Kolkata,Eastern,West Bengal,Kolkata,Science,3.0,4.4,60,0.88,Yes,Open All Days,Educational,Yes,All,Mid-range,22.5726,88.3639
+51,Belur Math,Eastern,West Bengal,Kolkata,Site,1.5,4.7,0,0.47,Yes,Open All Days,Religious,Yes,Morning,Budget,22.5726,88.3639
+52,Marble Palace,Eastern,West Bengal,Kolkata,Palace,1.0,4.4,0,0.1,Yes,Open All Days,Historical,Yes,Afternoon,Budget,22.5726,88.3639
+53,Calangute Beach,Southern,Goa,Goa,Beach,2.0,4.4,0,0.26,Yes,Open All Days,Scenic,Yes,Evening,Budget,15.2993,74.124
+54,Basilica of Bom Jesus,Southern,Goa,Goa,Church,1.0,4.5,0,0.59,Yes,Open All Days,Historical,Yes,Afternoon,Budget,15.2993,74.124
+55,Fort Aguada,Southern,Goa,Goa,Fort,1.5,4.2,0,0.95,Yes,Open All Days,Historical,Yes,Morning,Budget,15.2993,74.124
+56,Dudhsagar Falls,Southern,Goa,Goa,Waterfall,3.0,4.6,500,0.3,Yes,Open All Days,Nature,Yes,Afternoon,Mid-range,15.2993,74.124
+57,Anjuna Beach,Southern,Goa,Goa,Beach,2.0,4.4,0,0.18,Yes,Open All Days,Scenic,Yes,Evening,Budget,15.2993,74.124
+58,Chapora Fort,Southern,Goa,Goa,Fort,1.0,4.2,0,0.19,Yes,Open All Days,Historical,Yes,Evening,Budget,15.2993,74.124
+59,Se Cathedral,Southern,Goa,Goa,Church,1.0,4.5,0,0.05,Yes,Open All Days,Historical,Yes,Afternoon,Budget,15.2993,74.124
+60,Baga Beach,Southern,Goa,Goa,Beach,2.0,4.5,0,0.35,Yes,Open All Days,Scenic,Yes,Evening,Budget,15.2993,74.124
+61,Arambol Beach,Southern,Goa,Goa,Beach,2.0,4.6,0,0.1,Yes,Open All Days,Scenic,Yes,Evening,Budget,15.2993,74.124
+62,Palolem Beach,Southern,Goa,Goa,Beach,2.0,4.6,0,0.27,Yes,Open All Days,Scenic,Yes,Evening,Budget,15.2993,74.124
+63,Colva Beach,Southern,Goa,Goa,Beach,2.0,4.3,0,0.1,Yes,Open All Days,Scenic,Yes,Evening,Budget,15.2993,74.124
+64,Miramar Beach,Southern,Goa,Goa,Beach,1.5,4.2,0,0.3,Yes,Open All Days,Scenic,Yes,Evening,Budget,15.2993,74.124
+65,Aguada Beach,Southern,Goa,Goa,Beach,2.0,4.5,0,0.01,Yes,Open All Days,Scenic,Yes,Evening,Budget,15.2993,74.124
+66,Dr. Salim Ali Bird Santuary,Southern,Goa,Goa,Bird Sanctuary,2.0,3.9,10,0.03,Yes,Open All Days,Wildlife,Yes,Afternoon,Budget,15.2993,74.124
+67,Sabarmati Ashram,Western,Gujarat,Ahmedabad,Historical,1.5,4.6,0,0.35,Yes,Open All Days,Historical,Yes,Morning,Budget,23.0225,72.5714
+68,Dwarkadhish Temple,Western,Gujarat,Dwarka,Temple,2.0,4.7,0,0.59,No,Open All Days,Religious,No,Evening,Budget,22.2442,68.9685
+69,Gir National Park,Western,Gujarat,Junagadh,National Park,3.0,4.5,3500,0.08,No,Open All Days,Wildlife,Yes,Morning,Luxury,21.5222,70.4579
+70,White Desert,Western,Gujarat,Bhuj,Site,2.5,4.6,0,0.12,Yes,Open All Days,Nature,Yes,Evening,Budget,23.25,69.67
+71,Laxmi Vilas Palace,Western,Gujarat,Vadodara,Palace,2.0,4.4,200,0.17,Yes,Monday,Historical,Yes,Afternoon,Mid-range,22.3,73.2
+72,Somnath Temple,Western,Gujarat,Somnath,Temple,2.0,4.8,0,0.39,No,Open All Days,Religious,No,Morning,Budget,20.888,70.4012
+73,Rann Utsav,Western,Gujarat,Rann of Kutch,Cultural,3.0,4.9,7500,0.1,Yes,Open All Days,Cultural,Yes,Evening,Luxury,23.8344,70.1264
+74,Statue of Unity,Western,Gujarat,Kevadia,Monument,3.0,4.6,350,0.67,No,Monday,Historical,Yes,All,Mid-range,21.8833,73.6833
+75,Dandi Kutir,Western,Gujarat,Gandhinagar,Museum,1.5,4.5,0,0.05,No,Open All Days,Historical,Yes,All,Budget,23.2156,72.6369
+76,Sabarmati Riverfront,Western,Gujarat,Ahmedabad,Urban Development Project,1.0,4.6,0,0.1,Yes,Open All Days,Recreational,Yes,Evening,Budget,23.0225,72.5714
+77,Manek Chowk,Western,Gujarat,Ahmedabad,Market,2.0,4.4,0,0.49,Yes,Open All Days,Food,Yes,Night,Budget,23.0225,72.5714
+78,Kankaria Lake,Western,Gujarat,Ahmedabad,Lake,3.0,4.5,10,0.3,Yes,Open All Days,Recreational,Yes,Afternoon,Budget,23.0225,72.5714
+79,Science City,Western,Gujarat,Ahmedabad,Science,7.0,4.4,500,0.11,Yes,Monday,Educational,Yes,All,Mid-range,23.0225,72.5714
+80,Hawa Mahal,Northern,Rajasthan,Jaipur,Palace,1.0,4.4,50,1.3,Yes,Open All Days,Architectural,Yes,Morning,Budget,26.9124,75.7873
+81,City Palace,Northern,Rajasthan,Udaipur,Palace,2.0,4.4,300,0.51,Yes,Open All Days,Historical,Yes,All,Mid-range,24.5854,73.7125
+82,Jaisalmer Fort,Northern,Rajasthan,Jaisalmer,Fort,2.5,4.4,50,0.56,No,Open All Days,Historical,Yes,All,Budget,26.9157,70.9083
+83,Ranthambore National Park,Northern,Rajasthan,Sawai Madhopur,Wildlife Sanctuary,3.0,4.6,500,0.09,No,Open All Days,Wildlife,Yes,All,Mid-range,26.0,76.35
+84,Pushkar Lake,Northern,Rajasthan,Pushkar,Temple,1.5,4.4,0,1.6,No,Open All Days,Religious,Yes,All,Budget,26.4877,74.5559
+85,Ajmer Sharif Dargah,Northern,Rajasthan,Ajmer,Shrine,1.0,4.6,0,0.35,Yes,Open All Days,Religious,No,All,Budget,26.4499,74.6399
+86,Mehrangarh Fort,Northern,Rajasthan,Jodhpur,Fort,2.0,4.6,100,0.64,Yes,Open All Days,Historical,Yes,All,Mid-range,26.2389,73.0243
+87,Chittorgarh Fort,Northern,Rajasthan,Chittorgarh,Fort,2.0,4.6,40,1.9,No,Open All Days,Historical,Yes,All,Budget,24.8887,74.6269
+88,Dilwara Temples,Northern,Rajasthan,Mount Abu,Temple,1.0,4.6,0,0.05,No,Open All Days,Religious,No,All,Budget,24.5926,72.7156
+89,Junagarh Fort,Northern,Rajasthan,Bikaner,Fort,2.0,4.5,50,0.32,Yes,Open All Days,Historical,Yes,All,Budget,28.0167,73.3119
+90,Amber Fort,Northern,Rajasthan,Jaipur,Fort,2.0,4.6,100,1.5,Yes,Open All Days,Historical,Yes,All,Mid-range,26.9124,75.7873
+91,Jaigarh Fort,Northern,Rajasthan,Jaipur,Fort,1.5,4.5,35,0.3,Yes,Open All Days,Historical,Yes,All,Budget,26.9124,75.7873
+92,Lake Pichola,Northern,Rajasthan,Udaipur,Lake,1.0,4.6,0,0.5,Yes,Open All Days,Nature,Yes,All,Budget,24.5854,73.7125
+93,Golden Temple (Harmandir Sahib),Northern,Punjab,Amritsar,Religious Site,1.5,4.9,0,1.9,Yes,Open All Days,Spiritual,Yes,All,Budget,31.634,74.8723
+94,Jallianwala Bagh,Northern,Punjab,Amritsar,Memorial,1.0,4.8,0,0.3,Yes,Open All Days,Historical,Yes,Afternoon,Budget,31.634,74.8723
+95,Wagah Border,Northern,Punjab,Amritsar,Border Crossing,2.0,4.8,0,0.17,Yes,Open All Days,Cultural,Yes,Evening,Budget,31.634,74.8723
+96,Rock Garden,Northern,Punjab,Chandigarh,Sculpture Garden,2.0,4.5,30,0.5,Yes,Open All Days,Artistic,Yes,All,Budget,30.75,76.78
+97,Alappuzha Beach,Southern,Kerala,Alappuzha,Beach,1.5,4.5,0,0.11,Yes,Open All Days,Recreational,Yes,All,Budget,9.4981,76.3388
+98,Munnar Tea Gardens,Southern,Kerala,Munnar,Scenic Area,2.0,4.3,0,0.3,No,Open All Days,Nature,Yes,All,Budget,10.0889,77.0595
+99,Fort Kochi,Southern,Kerala,Kochi,Site,1.0,4.4,0,0.1,Yes,Open All Days,Historical,Yes,All,Budget,9.9312,76.2673
+100,Padmanabhaswamy Temple,Southern,Kerala,Thiruvananthapuram,Temple,1.0,4.7,0,0.46,Yes,Open All Days,Religious,No,All,Budget,8.5241,76.9366
+101,Kozhikode Beach,Southern,Kerala,Kozhikode,Beach,1.5,3.9,0,0.059,Yes,Open All Days,Recreational,Yes,All,Budget,11.2588,75.7804
+102,Wayanad Wildlife Sanctuary,Southern,Kerala,Wayanad,Wildlife Sanctuary,3.0,4.5,300,2.2,No,Open All Days,Wildlife,Yes,All,Mid-range,11.6854,76.132
+103,Periyar National Park,Southern,Kerala,Thekkady,National Park,3.0,4.3,50,0.14,No,Open All Days,Wildlife,Yes,All,Budget,9.6031,77.1615
+104,Kumarakom Bird Sanctuary,Southern,Kerala,Kumarakom,Bird Sanctuary,2.0,3.8,50,0.1,Yes,Open All Days,Wildlife,Yes,All,Budget,9.6175,76.4301
+105,Varkala Beach,Southern,Kerala,Varkala,Beach,2.0,4.6,0,0.1,Yes,Open All Days,Recreational,Yes,All,Budget,8.7379,76.7163
+106,Bekal Fort,Southern,Kerala,Bekal,Fort,1.5,4.5,20,0.22,No,Open All Days,Historical,Yes,All,Budget,12.3925,75.0347
+107,Kovalam Beach,Southern,Kerala,Kovalam,Beach,2.0,4.4,0,0.68,Yes,Open All Days,Recreational,Yes,All,Budget,8.4004,76.9787
+108,St. Angelo Fort,Southern,Kerala,Kannur,Fort,1.0,4.4,20,0.11,Yes,Open All Days,Historical,Yes,All,Budget,11.8745,75.3704
+109,Seethargundu Viewpoint,Southern,Kerala,Nelliyampathy,Viewpoint,1.0,4.5,0,0.03,No,Open All Days,Nature,Yes,Morning,Budget,10.535,76.6936
+110,Kerala Folklore Museum,Southern,Kerala,Kochi,Cultural,1.5,4.4,100,0.1,Yes,Monday,Cultural,Yes,All,Mid-range,9.9312,76.2673
+111,Wonderla Amusement Park,Southern,Kerala,Kochi,Amusement Park,5.5,4.6,750,0.41,Yes,Open All Days,Entertainment,Yes,All,Luxury,9.9312,76.2673
+112,Mysore Palace,Southern,Karnataka,Mysore,Palace,2.0,4.6,50,2.5,Yes,Open All Days,Historical,Yes,All,Budget,12.2958,76.6394
+113,Hampi Archaeological Ruins,Southern,Karnataka,Hampi,Site,3.0,4.7,0,0.05,No,Open All Days,Historical,Yes,All,Budget,15.335,76.46
+114,Abbey Falls,Southern,Karnataka,Coorg,Waterfall,1.0,4.1,0,0.03,No,Open All Days,Nature,Yes,Morning,Budget,12.3375,75.8069
+115,Om Beach,Southern,Karnataka,Gokarna,Beach,2.0,4.5,0,0.09,No,Open All Days,Nature,Yes,All,Budget,24.0541,88.1176
+116,Mullayanagiri,Southern,Karnataka,Chikmagalur,Mountain Peak,3.0,4.5,0,0.05,No,Open All Days,Nature,Yes,All,Budget,13.313,75.737
+117,Badami Cave Temples,Southern,Karnataka,Badami,Cave,1.5,4.6,30,0.2,No,Open All Days,Religious,No,All,Budget,15.92,75.6803
+118,Jog Falls,Southern,Karnataka,Shivamogga,Waterfall,1.5,4.6,30,0.23,No,Open All Days,Nature,Yes,Morning,Budget,13.9299,75.5681
+119,Panambur Beach,Southern,Karnataka,Mangalore,Beach,1.5,4.5,0,0.1,Yes,Open All Days,Recreational,Yes,All,Budget,12.8717,74.8425
+120,Murudeshwar Temple,Southern,Karnataka,Murudeshwar,Temple,1.0,4.7,0,0.49,Yes,Open All Days,Religious,No,All,Budget,14.094,74.4899
+121,Gol Gumbaz,Southern,Karnataka,Bijapur,Mausoleum,1.5,4.5,20,0.25,No,Open All Days,Historical,Yes,All,Budget,16.83,75.71
+122,Bandipur National Park,Southern,Karnataka,Bandipur,National Park,3.0,4.4,300,0.15,No,Open All Days,Wildlife,Yes,Morning,Mid-range,11.6664,76.6291
+123,Halebidu Hoysaleswara Temple,Southern,Karnataka,Halebidu,Temple,1.0,4.7,15,0.11,No,Open All Days,Religious,No,All,Budget,13.2167,75.9833
+124,Shaniwar Wada,Western,Maharastra,Pune,Fort,2.0,4.4,50,1.2,Yes,Open All Days,Historical,Yes,All,Budget,18.5203,73.8567
+125,Ajanta Caves,Western,Maharastra,Aurangabad,Cave,3.0,4.6,30,0.21,Yes,Monday,Historical,Yes,Afternoon,Budget,19.88,75.32
+126,Sula Vineyards,Western,Maharastra,Nashik,Vineyard,2.0,4.1,300,0.1,Yes,Open All Days,Recreational,Yes,Afternoon,Mid-range,19.9975,73.7898
+127,Sai Baba Temple,Western,Maharastra,Shirdi,Temple,1.5,4.7,0,0.69,Yes,Open All Days,Religious,No,All,Budget,19.77,74.48
+128,Alibaug Beach,Western,Maharastra,Alibaug,Beach,1.5,4.2,0,0.05,Yes,Open All Days,Recreational,Yes,Evening,Budget,18.6414,72.8722
+129,Ganapatipule Temple,Western,Maharastra,Ratnagiri,Temple,1.0,4.7,0,0.1,No,Open All Days,Religious,No,All,Budget,16.9944,73.3
+130,Deekshabhoomi,Western,Maharastra,Nagpur,Monument,1.0,4.5,0,0.11,Yes,Open All Days,Religious,Yes,Afternoon,Budget,21.1497,79.0806
+131,Mahalakshmi Temple,Western,Maharastra,Kolhapur,Temple,1.0,4.8,0,0.9,Yes,Open All Days,Religious,No,All,Budget,16.6917,74.2333
+132,Karla Caves,Western,Maharastra,Lonavala,Cave,1.5,4.4,25,0.27,Yes,Yes,Historical,Yes,Afternoon,Budget,18.7557,73.4091
+133,Tarkarli Beach,Western,Maharashtra,Tarkarli,Beach,2.0,4.6,0,0.065,No,Open All Days,Recreational,Yes,Evening,Budget,16.027,73.4862
+134,Kaas Plateau,Western,Maharashtra,Satara,Valley,2.0,4.4,300,0.05,No,Open All Days,Nature,Yes,Afternoon,Mid-range,17.688,74.006
+135,Echo Point,Western,Maharashtra,Matheran,Viewpoint,1.5,4.4,0,0.02,Yes,Open All Days,Nature,Yes,Morning,Budget,18.9866,73.2679
+136,Ellora Caves,Western,Maharashtra,Ajanta,Cave,3.0,4.7,30,0.49,Yes,Tuesday,Historical,Yes,Afternoon,Budget,20.5519,75.7033
+137,Khajuraho Group of Monuments,Central,Madhya Pradesh,Khajuraho,Temples,2.0,4.7,40,0.09,No,Open All Days,Cultural,Yes,Afternoon,Budget,24.85,79.925
+138,Sanchi Stupa,Central,Madhya Pradesh,Bhopal,Monument,1.5,4.7,30,0.01,Yes,Open All Days,Historical,Yes,Afternoon,Budget,23.2599,77.4126
+139,Rajwada Palace,Central,Madhya Pradesh,Indore,Palace,1.0,4.4,10,0.63,Yes,Open All Days,Historical,Yes,Afternoon,Budget,22.7167,75.8472
+140,Gwalior Fort,Central,Madhya Pradesh,Gwalior,Fort,2.5,4.5,75,0.4,Yes,Open All Days,Historical,Yes,Morning,Mid-range,26.2125,78.1775
+141,Mahakaleshwar Jyotirlinga,Central,Madhya Pradesh,Ujjain,Temple,1.5,4.8,0,1.2,Yes,Open All Days,Religious,No,All,Budget,23.17,75.79
+142,Dhuandhar Falls,Central,Madhya Pradesh,Jabalpur,Waterfall,1.0,4.5,0,0.01,No,Open All Days,Nature,Yes,Morning,Budget,23.1667,79.9333
+143,Bee Falls,Central,Madhya Pradesh,Pachmarhi,Waterfall,1.5,4.6,15,0.065,No,Open All Days,Nature,Yes,Morning,Budget,22.4674,78.4346
+144,Kanha National Park,Central,Madhya Pradesh,Kanha,Wildlife Sanctuary,3.0,4.5,100,0.1,No,Open All Days,Wildlife,Yes,Morning,Mid-range,22.3345,80.6115
+145,Bandhavgarh National Park,Central,Madhya Pradesh,Bandhavgarh,National Park,3.0,4.5,50,0.05,No,Open All Days,Wildlife,Yes,Morning,Budget,23.7226,81.0267
+146,Orchha Fort,Central,Madhya Pradesh,Orchha,Fort,1.5,4.8,10,0.1,No,Open All Days,Historical,Yes,Afternoon,Budget,25.35,78.64
+147,Jahaz Mahal,Central,Madhya Pradesh,Mandu,Site,1.0,3.9,50,0.03,No,Open All Days,Historical,Yes,Afternoon,Budget,23.7946,85.4687
+148,Bhimbetka Rock Shelters,Central,Madhya Pradesh,Bhimbetka,Prehistoric Site,2.0,4.6,25,0.07,No,Open All Days,Archaeological,Yes,Afternoon,Budget,22.9372,77.6127
+149,Narmada Udgam Temple,Central,Madhya Pradesh,Amarkantak,Temple,1.0,4.4,0,0.01,No,Open All Days,Religious,Yes,All,Budget,22.6734,81.7584
+150,Chitrakoot Falls,Central,Madhya Pradesh,Chitrakoot,Waterfall,1.5,4.4,0,0.1,No,Open All Days,Nature,Yes,Morning,Budget,25.1764,80.8687
+151,The Ridge,Northern,Himachal Pradesh,Shimla,Scenic Point,1.0,4.7,0,0.03,Yes,Open All Days,Recreational,Yes,Morning,Budget,31.1048,77.1734
+152,Solang Valley,Northern,Himachal Pradesh,Manali,Valley,2.0,4.1,0,0.05,No,Open All Days,Adventure,Yes,Morning,Budget,32.2454,77.1873
+153,Dalai Lama Temple,Northern,Himachal Pradesh,dalhousie,Temple,1.5,4.7,0,0.15,Yes,Open All Days,Religious,No,All,Budget,32.5387,75.971
+154,Khajjiar Lake,Northern,Himachal Pradesh,Dalhousie,Lake,1.5,4.5,0,0.1,No,Open All Days,Nature,Yes,Morning,Budget,32.5387,75.971
+155,Key Monastery,Northern,Himachal Pradesh,Spiti Valley,Monastery,1.0,4.8,0,0.025,No,Open All Days,Religious,Yes,Morning,Budget,32.2461,78.0349
+156,Great Himalayan National Park,Northern,Himachal Pradesh,Kullu,National Park,3.0,4.5,50,0.2,No,Open All Days,Wildlife,Yes,All,Budget,31.9579,77.1095
+157,Chamera Lake,Northern,Himachal Pradesh,Chamba,Lake,2.0,4.4,0,0.01,No,Open All Days,Recreational,Yes,Morning,Budget,32.5534,76.1258
+158,Sangla Valley,Northern,Himachal Pradesh,Kinnaur,Valley,2.0,4.5,0,0.01,No,Open All Days,Nature,Yes,Morning,Budget,31.651,78.4752
+159,Kangra Fort,Northern,Himachal Pradesh,Kangra,Fort,2.0,4.4,150,0.1,Yes,Open All Days,Historical,Yes,All,Mid-range,32.0998,76.2691
+160,Tea Gardens,Northern,Himachal Pradesh,Palampur,Tea Plantation,1.5,4.6,0,0.015,Yes,Open All Days,Agricultural,Yes,Morning,Budget,32.1097,76.5366
+161,Prashar Lake,Northern,Himachal Pradesh,Mandi,Lake,1.5,4.6,0,0.01,No,Open All Days,Nature,Yes,Morning,Budget,31.7069,76.9317
+162,Paragliding Site,Northern,Himachal Pradesh,Bir Billing,Adventure Sport,2.0,4.8,2500,0.01,No,Open All Days,Adventure,Yes,All,Luxury,32.0494,76.7183
+163,Triund Trek,Northern,Himachal Pradesh,McLeod Ganj,Trekking,5.0,4.8,0,0.01,Yes,Open All Days,Adventure,Yes,Morning,Budget,32.2426,76.3213
+164,Manikaran Sahib,Northern,Himachal Pradesh,Manikaran,Gurudwara,1.0,4.6,0,1.3,No,Open All Days,Religious,Yes,Morning,Budget,32.0273,77.3469
+165,Hatu Peak,Northern,Himachal Pradesh,Narkanda,Viewpoint,2.0,4.5,0,1.1,Yes,Open All Days,Nature,Yes,All,Budget,31.2581,77.4589
+166,Barot Valley,Northern,Himachal Pradesh,Barot,Valley,2.0,4.7,0,1.2,No,Open All Days,Nature,Yes,Morning,Budget,31.9965,76.9015
+167,Serolsar Lake,Northern,Himachal Pradesh,Shoja,Lake,2.5,4.4,0,0.9,No,Open All Days,Nature,Yes,Morning,Budget,31.5721,77.3756
+168,Kufri Fun World,Northern,Himachal Pradesh,Kufri,Ski Resort,5.0,3.8,1500,0.1,Yes,Open All Days,Recreational,Yes,All,Luxury,31.0979,77.2678
+169,Naini Lake,Northern,Uttarakhand,Nainital,Lake,1.5,4.2,0,0.01,Yes,Open All Days,Nature,Yes,Morning,Budget,29.3919,79.4542
+170,Laxman Jhula,Northern,Uttarakhand,Rishikesh,Suspension Bridge,1.0,4.4,0,0.03,Yes,Open All Days,Cultural,Yes,Morning,Budget,30.0869,78.2676
+171,Har Ki Pauri,Northern,Uttarakhand,Haridwar,Ghat,1.0,4.5,0,0.025,Yes,Open All Days,Religious,Yes,All,Budget,29.9457,78.1642
+172,Robber's Cave,Northern,Uttarakhand,Dehradun,Cave,1.5,4.5,25,0.01,Yes,Open All Days,Nature,Yes,Morning,Budget,30.3165,78.0322
+173,Kempty Falls,Northern,Uttarakhand,Mussoorie,Waterfall,1.5,4.2,15,0.55,Yes,Open All Days,Nature,Yes,Morning,Budget,30.45,78.08
+174,Auli Ski Resort,Northern,Uttarakhand,Auli,Ski Resort,3.0,4.5,0,0.01,No,Open All Days,Adventure,Yes,Morning,Budget,30.5298,79.5694
+175,Badrinath Temple,Northern,Uttarakhand,Badrinath,Temple,1.0,4.8,0,0.29,No,Open All Days,Religious,No,All,Budget,30.7433,79.4938
+176,Binsar Wildlife Sanctuary,Northern,Uttarakhand,Almora,Wildlife Sanctuary,2.0,4.3,150,0.01,No,Open All Days,Wildlife,Yes,All,Mid-range,29.5971,79.6591
+177,Chaubatia Gardens,Northern,Uttarakhand,Ranikhet,Orchard,1.0,4.0,50,0.025,No,Open All Days,Recreational,Yes,All,Budget,29.6434,79.4322
+178,Jim Corbett National Park,Northern,Uttarakhand,Jim Corbett,National Park,3.0,4.4,100,0.3,Yes,Open All Days,Wildlife,Yes,All,Mid-range,29.53,78.7747
+179,Gangotri Temple,Northern,Uttarakhand,Uttarkashi,Temple,1.0,4.8,0,0.05,No,Open All Days,Religious,No,All,Budget,30.73,78.45
+180,Tungnath Temple,Northern,Uttarakhand,Chopta,Temple,2.0,4.8,0,0.09,No,Open All Days,Religious,No,All,Budget,30.4878,79.1761
+181,Valley of Flowers,Northern,Uttarakhand,Joshimath,National Park,5.0,4.7,150,0.035,No,Open All Days,Nature,Yes,Morning,Mid-range,30.555,79.565
+182,Taj Mahal,Central,Uttar Pradesh,Agra,Mausoleum,2.0,4.6,50,2.25,Yes,Friday,Historical,Yes,Morning,Budget,27.1767,78.0081
+183,Kashi Vishwanath Temple,Central,Uttar Pradesh,Varanasi,Temple,1.0,4.7,0,0.9,Yes,Open All Days,Religious,No,All,Budget,25.3176,82.9739
+184,Bara Imambara,Central,Uttar Pradesh,Lucknow,Monument,1.5,4.4,50,0.45,Yes,Monday,Historical,No,All,Budget,26.85,80.95
+185,Krishna Janmabhoomi,Central,Uttar Pradesh,Mathura,Temple,1.0,4.7,0,0.13,Yes,Open All Days,Religious,No,All,Budget,27.4925,77.6736
+186,Ram Janmabhoomi,Central,Uttar Pradesh,Ayodhya,Religious Site,1.0,4.8,0,0.025,Yes,Open All Days,Religious,No,All,Budget,26.7922,82.1998
+187,Banke Bihari Temple,Central,Uttar Pradesh,Vrindavan,Temple,1.0,4.8,0,0.37,Yes,Open All Days,Religious,No,All,Budget,27.58,77.7
+188,Triveni Sangam,Central,Uttar Pradesh,Allahabad,Confluence,1.0,4.5,0,0.09,Yes,Open All Days,Religious,Yes,Morning,Budget,25.4358,81.8463
+189,Jhansi Fort,Central,Uttar Pradesh,Jhansi,Fort,1.5,4.4,15,0.25,Yes,Open All Days,Historical,Yes,All,Budget,25.4486,78.5696
+190,Dhamek Stupa,Central,Uttar Pradesh,Sarnath,Monument,1.0,4.6,5,0.065,Yes,Open All Days,Historical,Yes,All,Budget,25.3762,83.0227
+191,Buland Darwaza,Central,Uttar Pradesh,Fatehpur Sikri,Monument,2.0,4.4,40,0.07,Yes,Open All Days,Historical,Yes,Afternoon,Budget,27.091,77.661
+192,Okhla Bird Sanctuary,Central,Uttar Pradesh,Noida,Bird Sanctuary,1.5,4.3,30,0.035,Yes,Open All Days,Wildlife,Yes,All,Budget,28.57,77.32
+193,Aligarh Fort,Central,Uttar Pradesh,Aligarh,Fort,1.0,4.1,20,0.0165,Yes,Open All Days,Historical,Yes,Afternoon,Budget,27.88,78.08
+194,Augarnath Temple,Central,Uttar Pradesh,Meerut,Temple,1.0,4.8,0,0.045,Yes,Open All Days,Religious,No,All,Budget,28.98,77.71
+195,Allen Forest Zoo,Central,Uttar Pradesh,Kanpur,Zoo,2.0,4.2,150,0.21,Yes,Monday,Wildlife,Yes,All,Mid-range,26.4499,80.3319
+196,Dal Lake,Northern,Jammu and Kashmir,Srinagar,Lake,2.0,4.6,0,0.15,Yes,Open All Days,Nature,Yes,Morning,Budget,34.0837,74.7973
+197,Pangong Tso,Northern,Ladakh,Leh,Lake,2.0,4.9,20,0.15,Yes,Open All Days,Nature,Yes,Morning,Budget,34.1526,77.5771
+198,Betaab Valley,Northern,Jammu and Kashmir,Pahalgam,Valley,2.0,4.6,100,0.11,No,Open All Days,Nature,Yes,All,Mid-range,34.0163,75.315
+199,Vaishno Devi,Northern,Jammu and Kashmir,Jammu,Temple,5.0,4.7,0,0.55,Yes,Open All Days,Religious,No,All,Budget,32.73,74.87
+200,Patnitop Height,Northern,Jammu and Kashmir,Udhampur,Hill,2.0,4.1,0,0.01,No,Open All Days,Recreational,Yes,All,Budget,32.916,75.1419
+201,Amarnath Cave,Northern,Jammu and Kashmir,Anantnag,Temple,6.0,4.5,0,0.11,No,Open All Days,Religious,Yes,All,Budget,33.7311,75.1522
+202,Thiksey Monastery,Northern,Ladakh,Leh,Monastery,1.5,4.7,20,0.05,Yes,Open All Days,Religious,No,All,Budget,34.1526,77.5771
+203,Nubra Valley,Northern,Ladakh,Nubra Valley,Valley,2.0,4.5,0,0.1,No,Open All Days,Nature,Yes,All,Budget,34.6863,77.5673
+204,Kargil War Memorial,Northern,Ladakh,Kargil,War Memorial,1.0,4.8,0,0.011,No,Open All Days,Historical,Yes,All,Budget,34.5594,76.1256
+205,Diskit Monastery,Northern,Ladakh,Diskit,Monastery,1.0,4.7,20,0.015,No,Open All Days,Religious,No,Morning,Budget,34.5428,77.5581
+206,Kishtwar National Park,Northern,Jammu and Kashmir,Kishtwar,National Park,3.0,4.3,100,0.01,No,Open All Days,Wildlife,Yes,All,Mid-range,33.3135,75.7673
+207,Hemis National Park,Northern,Ladakh,Hemis,National Park,4.0,4.4,20,0.02,No,Open All Days,Wildlife,Yes,All,Budget,33.9125,77.7067
+208,Dras War Memorial,Northern,Ladakh,Dras,War Memorial,1.0,4.8,0,0.012,No,Open All Days,Historical,Yes,All,Budget,34.4468,75.7586
+209,Magnetic Hill,Northern,Ladakh,Leh,Gravity Hill,0.5,3.7,0,0.1,Yes,Open All Days,Nature,Yes,All,Budget,34.1526,77.5771
+210,Khardung La Pass,Northern,Ladakh,Leh,Hill,1.0,4.5,0,0.05,Yes,Open All Days,Adventure,Yes,Afternoon,Budget,34.1526,77.5771
+211,Thiksey Monastery,Northern,Ladakh,Leh,Monastery,1.5,4.7,30,0.05,Yes,Open All Days,Religious,No,All,Budget,34.1526,77.5771
+212,Prem Mandir,Central,Uttar Pradesh,Vrindavan,Temple,1.5,4.8,0,0.49,Yes,Open All Days,Religious,Yes,Evening,Budget,27.58,77.7
+213,Kirti Mandir,Central,Uttar Pradesh,Porbandar,Memorial,1.0,4.8,0,0.03,Yes,Open All Days,Historical,Yes,Morning,Budget,21.6417,69.6293
+214,Nand Gaon,Central,Uttar Pradesh,Mathura,Village,1.0,4.1,0,0.01,Yes,Open All Days,Cultural,Yes,Morning,Budget,27.4925,77.6736
+215,Barsana Mandir,Central,Uttar Pradesh,Mathura,Temple,1.0,4.8,0,0.1,Yes,Open All Days,Religious,Yes,Morning,Budget,27.4925,77.6736
+216,Tiger Hill,Eastern,West Bengal,Darjeeling,Sunrise Point,1.0,4.5,0,0.025,No,Open All Days,Nature,Yes,All,Budget,27.041,88.2663
+217,Jaldapara National Park,Eastern,West Bengal,Siliguri,Wildlife Sanctuary,3.0,4.4,250,0.035,Yes,Open All Days,Wildlife,Yes,All,Mid-range,26.7271,88.3953
+218,Sundarbans National Park,Eastern,West Bengal,Sundarbans,National Park,4.0,4.4,60,0.065,No,Open All Days,Wildlife,Yes,All,Mid-range,21.9497,89.1833
+219,Digha Beach,Eastern,West Bengal,Digha,Beach,1.5,4.5,0,0.09,No,Open All Days,Recreational,Yes,Morning,Budget,21.6266,87.5074
+220,Hazarduari Palace,Eastern,West Bengal,Murshidabad,Palace,1.5,4.5,10,0.18,Yes,Friday,Historical,Yes,Morning,Budget,24.18,88.27
+221,Kankalitala Temple,Eastern,West Bengal,Bolpur,Temple,0.5,4.7,0,0.045,Yes,Open All Days,Religious,No,All,Budget,23.67,87.72
+222,Hangseswari Temple,Eastern,West Bengal,Hooghly,Temple,0.5,4.6,0,0.07,Yes,Open All Days,Architectural,No,All,Budget,22.9086,88.3968
+223,Gorumara National Park,Eastern,West Bengal,Jalpaiguri,National Park,3.0,4.4,100,0.07,Yes,Open All Days,Wildlife,Yes,All,Mid-range,26.52,88.73
+224,Cooch Behar Palace,Eastern,West Bengal,Cooch Behar,Palace,1.0,4.5,20,0.09,Yes,Friday,Historical,Yes,All,Budget,26.3239,89.451
+225,Ayodhya Hills,Eastern,West Bengal,Purulia,Hill,2.5,4.5,0,0.15,No,Open All Days,Nature,Yes,All,Budget,23.3321,86.3652
+226,Jagannath Temple,Eastern,Odisha,Puri,Temple,2.0,4.7,0,1.0,Yes,Open All Days,Religious,No,All,Budget,19.8106,85.8314
+227,Sun Temple,Eastern,Odisha,Konark,Temple,1.5,4.7,40,0.83,Yes,Open All Days,Historical,Yes,All,Budget,19.8876,86.0945
+228,Lingaraj Temple,Eastern,Odisha,Bhubaneswar,Temple,1.0,4.6,0,0.35,Yes,Open All Days,Religious,No,All,Budget,20.2961,85.8245
+229,Khandadhar Waterfall,Eastern,Odisha,Rourkela,Waterfall,1.5,4.5,0,1.2,No,Open All Days,Nature,Yes,All,Budget,22.2604,84.8536
+230,Barabati Fort,Eastern,Odisha,Cuttack,Fort,1.0,4.5,0,0.13,Yes,Open All Days,Historical,Yes,All,Budget,20.5236,85.7881
+231,Hirakud Dam,Eastern,Odisha,Sambalpur,Dam,1.0,4.5,0,0.01,No,Open All Days,Engineering Marvel,Yes,All,Budget,21.47,83.97
+232,Chilika Lake,Eastern,Odisha,Chilika,Lake,2.0,3.9,0,0.1,Yes,Open All Days,Nature,Yes,Morning,Budget,19.716,85.321
+233,Tara Tarini Temple,Eastern,Odisha,Berhampur,Temple,1.0,4.6,0,0.01,Yes,Open All Days,Religious,No,All,Budget,19.315,84.7941
+234,Badaghagara Waterfall,Eastern,Odisha,Keonjhar,Waterfall,1.0,4.3,0,0.018,No,Open All Days,Nature,Yes,Morning,Budget,21.6289,85.5817
+235,Chandipur Beach,Eastern,Odisha,Balasore,Beach,1.5,4.2,0,0.014,Yes,Open All Days,Recreational,Yes,Morning,Budget,21.5033,86.925
+236,Sanaghagara Waterfall,Eastern,Odisha,Kendujhar,Waterfall,1.0,4.4,0,0.055,No,Open All Days,Nature,Yes,All,Budget,21.6289,85.5817
+237,Marina Beach,Southern,Tamil Nadu,Chennai,Beach,1.5,3.9,0,0.1,Yes,Open All Days,Recreational,Yes,Morning,Budget,13.0827,80.2707
+238,Meenakshi Amman Temple,Southern,Tamil Nadu,Madurai,Temple,2.0,4.7,0,0.65,Yes,Open All Days,Religious,No,All,Budget,9.9252,78.1198
+239,Ramanathaswamy Temple,Southern,Tamil Nadu,Rameswaram,Temple,1.5,4.6,0,0.01,No,Open All Days,Religious,No,All,Budget,9.288,79.313
+240,Vivekananda Rock Memorial,Southern,Tamil Nadu,Kanyakumari,Memorial,1.0,4.6,20,0.47,Yes,Open All Days,Historical,No,Morning,Budget,8.0883,77.5385
+241,Ooty Lake,Southern,Tamil Nadu,Ooty,Lake,1.0,4.1,10,0.61,Yes,Open All Days,Recreational,Yes,Morning,Budget,11.4102,76.695
+242,Marudamalai Temple,Southern,Tamil Nadu,Coimbatore,Temple,1.0,4.7,0,0.3,Yes,Open All Days,Religious,No,All,Budget,11.0008,76.9633
+243,Kodaikanal Lake,Southern,Tamil Nadu,Kodaikanal,Lake,2.0,3.9,0,0.1,No,Open All Days,Recreational,Yes,Morning,Budget,10.23,77.48
+244,Brihadeeswarar Temple,Southern,Tamil Nadu,Thanjavur,Temple,1.5,4.8,0,0.35,Yes,Open All Days,Religious,No,All,Budget,10.787,79.1378
+245,Shore Temple,Southern,Tamil Nadu,Mahabalipuram,Temple,1.0,4.6,40,0.09,Yes,Open All Days,Historical,No,All,Budget,12.6269,80.1927
+246,Yercaud Lake,Southern,Tamil Nadu,Yercaud,Lake,1.0,4.2,0,0.019,No,Open All Days,Recreational,Yes,Morning,Budget,11.7794,78.2034
+247,Nellaiappar Temple,Southern,Tamil Nadu,Tirunelveli,Temple,1.0,4.6,0,0.16,Yes,Open All Days,Religious,No,All,Budget,8.7139,77.7567
+248,Nataraja Temple,Southern,Tamil Nadu,Chidambaram,Temple,1.0,4.7,0,0.28,Yes,Open All Days,Religious,No,All,Budget,11.407,79.6912
+249,Kanaka Durga Temple,Southern,Andhra Pradesh,Vijayawada,Temple,1.0,4.7,0,0.44,Yes,Open All Days,Religious,No,All,Budget,16.5193,80.6305
+250,Rishikonda Beach,Southern,Andhra Pradesh,Visakhapatnam,Beach,1.5,4.5,0,0.39,Yes,Open All Days,Recreational,Yes,Morning,Budget,17.6868,83.2185
+251,Mallikarjuna Swamy Temple,Southern,Andhra Pradesh,Srisailam,Temple,1.0,4.7,0,0.49,No,Open All Days,Religious,No,All,Budget,16.0739,78.8687
+252,Papikondalu,Southern,Andhra Pradesh,Rajahmundry,Hill,2.0,4.3,0,0.032,Yes,Open All Days,Nature,Yes,All,Budget,16.98,81.78
+253,Lepakshi,Southern,Andhra Pradesh,Anantapur,Site,1.5,4.6,0,0.075,No,Open All Days,Historical,Yes,All,Budget,14.68,77.599
+254,Belum Caves,Southern,Andhra Pradesh,Kurnool,Cave,1.5,4.4,65,0.11,Yes,Open All Days,Natural Wonder,Yes,Afternoon,Mid-range,15.83,78.05
+255,Amaravathi Temple,Southern,Andhra Pradesh,Amravati,Temple,1.0,4.7,0,0.041,Yes,Open All Days,Religious,No,All,Budget,20.9258,77.7647
+256,Uppalapadu Bird Sanctuary,Southern,Andhra Pradesh,Guntur,Bird Sanctuary,1.0,4.4,10,0.7,Yes,Open All Days,Wildlife,Yes,All,Budget,16.3008,80.4428
+257,Gandikota Fort,Southern,Andhra Pradesh,Kadapa,Fort,1.5,4.5,0,0.015,No,Open All Days,Historical,Yes,Morning,Budget,14.4673,78.8242
+258,Prasanthi Nilayam,Southern,Andhra Pradesh,Puttaparthi,Spiritual Center,1.0,4.7,0,0.12,Yes,Open All Days,Religious,Yes,All,Budget,14.167,77.8115
+259,Simhachalam Temple,Southern,Andhra Pradesh,Vizianagaram,Temple,1.0,4.7,0,0.59,Yes,Open All Days,Religious,No,All,Budget,18.1159,83.406
+260,Kailasagiri,Southern,Andhra Pradesh,Visakhapatnam,Hill,2.0,4.5,0,0.019,Yes,Open All Days,Recreational,Yes,All,Budget,17.6868,83.2185
+261,Submarine Museum,Southern,Andhra Pradesh,Visakhapatnam,Museum,1.0,4.6,40,0.49,Yes,Open All Days,Historical,Yes,All,Budget,17.6868,83.2185
+262,Borra Caves,Southern,Andhra Pradesh,Visakhapatnam,Cave,2.0,4.5,60,0.31,No,Open All Days,Natural Wonder,Yes,Afternoon,Mid-range,17.6868,83.2185
+263,War Memorial,Southern,Andhra Pradesh,Visakhapatnam,War Memorial,1.0,4.6,0,0.059,Yes,Open All Days,Historical,Yes,All,Budget,17.6868,83.2185
+264,Indira Gandhi Zoological Park,Southern,Andhra Pradesh,Visakhapatnam,Zoo,2.0,4.1,20,0.25,Yes,Monday,Wildlife,Yes,Afternoon,Budget,17.6868,83.2185
+265,Matsyadarshini Aquarium,Southern,Andhra Pradesh,Visakhapatnam,Aquarium,1.0,3.8,20,0.03,Yes,Open All Days,Recreational,Yes,All,Budget,17.6868,83.2185
+266,Visakha Museum,Southern,Andhra Pradesh,Visakhapatnam,Museum,1.0,4.3,10,0.065,Yes,Open All Days,Cultural,Yes,All,Budget,17.6868,83.2185
+267,Nathula Pass,Eastern,Sikkim,Gangtok,Hill,2.0,4.3,20,0.15,Yes,Open All Days,Historical,Yes,Afternoon,Budget,27.3389,88.6065
+268,Pemayangtse Monastery,Eastern,Sikkim,Pelling,Monastery,1.0,4.6,20,0.015,No,Open All Days,Religious,No,Morning,Budget,27.3167,88.2333
+269,Char Dham,Eastern,Sikkim,Namchi,Religious Complex,2.0,4.7,50,0.12,Yes,Open All Days,Religious,No,All,Budget,27.17,88.35
+270,Rumtek Monastery,Eastern,Sikkim,Gangtok,Monastery,1.0,4.6,10,0.035,Yes,Open All Days,Religious,No,Morning,Budget,27.3389,88.6065
+271,Buddha Park,Eastern,Sikkim,Ravangla,Park,1.0,4.8,50,0.1,Yes,Open All Days,Cultural,Yes,All,Budget,27.3075,88.363
+272,Baba Harbhajan Singh Temple,Eastern,Sikkim,Gangtok,Temple,1.0,4.7,0,0.075,Yes,Open All Days,Religious,No,All,Budget,27.3389,88.6065
+273,Tsomgo Lake,Eastern,Sikkim,Gangtok,Lake,2.0,4.5,0,0.15,Yes,Open All Days,Nature,Yes,Morning,Budget,27.3389,88.6065
+274,Kamakhya Temple,North Eastern,Assam,Guwahati,Temple,2.0,4.6,0,0.21,Yes,Open All Days,Religious,No,All,Budget,26.1445,91.7362
+275,Kaziranga National Park,North Eastern,Assam,Kaziranga,National Park,3.0,4.5,650,0.068,No,Open All Days,Wildlife,No,Morning,Luxury,26.5775,93.1711
+276,Umananda Island,North Eastern,Assam,Guwahati,Island,1.0,4.1,0,0.01,Yes,Open All Days,Nature,Yes,Morning,Budget,26.1445,91.7362
+277,Sivasagar Sivadol,North Eastern,Assam,Sivasagar,Temple,1.0,4.7,0,0.065,No,Open All Days,Historical,Yes,All,Budget,26.9826,94.6425
+278,Majuli Island,North Eastern,Assam,Majuli,River Island,2.0,4.7,0,0.01,No,Open All Days,Cultural,Yes,Morning,Budget,26.95,94.2167
+279,Manas National Park,North Eastern,Assam,Manas,National Park,3.0,4.6,500,0.19,No,Open All Days,Wildlife,Yes,Morning,Mid-range,26.6594,91.0011
+280,Hayagriva Madhava Temple,North Eastern,Assam,Hajo,Temple,1.0,4.5,0,0.9,No,Open All Days,Religious,Yes,All,Budget,26.2486,91.5284
+281,Pobitora Wildlife Sanctuary,North Eastern,Assam,Guwahati,Wildlife Sanctuary,2.0,4.4,500,0.037,Yes,Open All Days,Wildlife,Yes,All,Mid-range,26.1445,91.7362
+282,Tawang Monastery,North Eastern,Arunachal Pradesh,Tawang,Monastery,2.0,4.7,0,0.032,No,Open All Days,Religious,No,Morning,Budget,27.5861,91.8594
+283,Ujjayanta Palace,North Eastern,Tripura,Agartala,Palace,1.5,4.5,10,0.035,Yes,Monday,Historical,Yes,All,Budget,23.8314,91.2869
+284,Dumboor Lake,North Eastern,Tripura,Dumboor,Lake,1.0,4.5,0,0.01,No,Open All Days,Nature,Yes,Morning,Budget,23.5186,91.8315
+285,Unakoti Rock Carvings,North Eastern,Tripura,Unakoti,Rock Carvings,1.5,4.5,20,0.025,No,Open All Days,Historical,Yes,Morning,Budget,24.3211,92.0645
+286,Chitrakote Falls,Central,Chhattisgarh,Bastar,Waterfall,1.5,4.6,0,0.19,No,Open All Days,Nature,Yes,Morning,Budget,19.0732,82.0287
+287,Dzükou Valley,North Eastern,Nagaland,Dzükou Valley,Valley,3.0,4.7,0,0.01,No,Open All Days,Trekking,Yes,Afternoon,Budget,25.5539,94.0628
+288,Promenade Beach,Southern,Puducherry,Puducherry,Beach,1.0,4.5,0,0.09,Yes,Open All Days,Recreational,Yes,Morning,Budget,11.9416,79.8083
+289,Auroville,Southern,Puducherry,Auroville,Township,2.0,4.1,0,0.035,Yes,Open All Days,Cultural,Yes,All,Budget,12.007,79.8106
+290,Paradise Beach,Southern,Puducherry,Puducherry,Beach,1.0,4.5,200,0.015,Yes,Open All Days,Recreational,Yes,Morning,Mid-range,11.9416,79.8083
+291,Cellular Jail,Southern,Andaman and Nicobar Islands,Port Blair,Landmark,1.5,4.7,30,0.12,Yes,Monday,Historical,Yes,Afternoon,Budget,11.6683,92.7378
+292,Radhanagar Beach,Southern,Andaman and Nicobar Islands,Havelock Island,Beach,1.0,4.8,0,0.09,No,Open All Days,Nature,Yes,Morning,Budget,11.9761,92.9876
+293,Bharatpur Beach,Southern,Andaman and Nicobar Islands,Neil Island,Beach,1.0,4.5,0,0.04,No,Open All Days,Nature,Yes,Morning,Budget,11.8327,93.0506
+294,Limestone Caves,Southern,Andaman and Nicobar Islands,Baratang Island,Natural Feature,1.5,4.4,250,0.015,No,Open All Days,Nature,Yes,Morning,Mid-range,12.1333,92.7667
+295,Naida Caves,Western,Daman and Diu,Diu,Cave,1.0,4.5,0,0.6,No,Open All Days,Nature,Yes,Afternoon,Budget,20.7158,70.9858
+296,Diu Fort,Western,Daman and Diu,Diu,Fort,1.5,4.6,0,1.2,No,Open All Days,Historical,Yes,Afternoon,Budget,20.7158,70.9858
+297,Baba Baidyanath Temple,Eastern,Jharkhand,Deoghar,Temple,1.0,4.7,0,1.8,Yes,Open All Days,Religious,Yes,All,Budget,24.48,86.7
+298,Pahari Mandir,Eastern,Jharkhand,Ranchi,Temple,1.0,4.6,0,0.13,Yes,Open All Days,Religious,Yes,All,Budget,23.36,85.33
+299,Mahabodhi Temple,Eastern,Bihar,Bodh Gaya,Temple,1.5,4.7,0,0.2,Yes,Open All Days,Religious,Yes,All,Budget,24.6961,84.9869
+300,Sanjay Gandhi Biological Park,Eastern,Bihar,Patna,Zoo,2.5,4.3,30,0.5,Yes,Open All Days,Wildlife,Yes,All,Budget,25.594,85.1376
+301,Takhat Shri Harimandir Ji Patna Sahib,Eastern,Bihar,Patna,Gurudwara,1.0,4.7,0,0.25,Yes,Open All Days,Religious,Yes,All,Budget,25.594,85.1376
+302,Budhha Smriti Park,Eastern,Bihar,Patna,Park,1.0,4.4,10,0.31,Yes,Open All Days,Cultural,Yes,All,Budget,25.594,85.1376
+303,Kingdom of Dreams,Northern,Haryana,Gurugram,Entertainment,3.0,4.4,1100,0.3,Yes,Monday,Entertainment,Yes,Afternoon,Luxury,28.4595,77.0266
+304,Ambience Mall,Northern,Haryana,Gurugram,Mall,2.0,4.6,0,1.2,Yes,Open All Days,Shopping,Yes,Afternoon,Budget,28.4595,77.0266
+305,DLF CyberHub,Northern,Haryana,Gurugram,Commercial Complex,2.0,4.7,0,0.71,Yes,Open All Days,Entertainment,Yes,Afternoon,Budget,28.4595,77.0266
+306,Gurudwara Bangla Sahib,Northern,Delhi,New Delhi,Gurudwara,1.0,4.8,0,1.05,Yes,Open All Days,Religious,Yes,All,Budget,28.6139,77.2089
+307,Kedarnath,Northern,Uttarakhand,Kedarnath,Temple,1.5,4.8,0,2.0,No,Open All Days,Religious,No,All,Budget,30.7352,79.0669
+308,DLF Mall of India,Central,Uttar Pradesh,Noida,Mall,2.0,4.6,0,1.5,Yes,Open All Days,Shopping,Yes,All,Budget,28.57,77.32
+309,The Grand Venice Mall,Central,Uttar Pradesh,Greater Noida,Mall,2.0,4.2,0,0.45,Yes,Open All Days,Shopping,Yes,All,Budget,28.4744,77.504
+310,Wonderla Amusement Park,Southern,Karnataka,Bengaluru,Amusement Park,4.0,4.5,890,0.95,Yes,Open All Days,Entertainment,Yes,All,Luxury,12.9716,77.5946
+311,Nandankanan Zoological Park,Eastern,Odisha,Bhubaneswar,Zoo,3.0,4.4,50,0.81,Yes,Monday,Wildlife,Yes,Afternoon,Budget,20.2961,85.8245
+312,Orion Mall,Southern,Karnataka,Bengaluru,Mall,2.0,4.5,0,1.8,Yes,Open All Days,Shopping,Yes,All,Budget,12.9716,77.5946
+313,Inorbit Mall Cyberabad,Southern,Telangana,Hyderabad,Mall,2.0,4.5,0,1.2,Yes,Open All Days,Shopping,Yes,All,Budget,17.385,78.4867
+314,Jama Masjid,Northern,Delhi,New Delhi,Mosque,1.0,4.5,0,0.49,Yes,Open All Days,Historical,Yes,All,Budget,28.6139,77.2089
+315,Ramanathaswamy Temple,Southern,Tamil Nadu,Rameswaram,Temple,1.5,4.7,0,0.1,Yes,Open All Days,Religious,No,All,Budget,9.288,79.313
+316,Buddh International Circuit,Central,Uttar Pradesh,Greater Noida,Race Track,2.0,4.6,1500,7.4,Yes,Sunday,Sports,Yes,All,Luxury,28.4744,77.504
+317,Phoenix Palassio,Central,Uttar Pradesh,Lucknow,Mall,2.0,4.6,0,0.35,Yes,Open All Days,Shopping,Yes,All,Budget,26.85,80.95
+318,LuLu International Shopping Mall,Southern,Kerala,Kochi,Mall,3.0,4.6,0,1.9,Yes,Open All Days,Shopping,Yes,All,Budget,9.9312,76.2673
+319,Rail Museum,Northern,Delhi,New Delhi,Museum,2.0,4.4,50,0.24,Yes,Monday,Cultural,Yes,Morning,Budget,28.6139,77.2089
+320,Living Root Bridge,North Eastern,Meghalaya,Cherrapunji,Natural Feature,2.0,4.6,0,0.06,No,Open All Days,Nature,Yes,Morning,Budget,25.284,91.721
+321,Akshardham,Western,Gujarat,Gandhinagar,Temple,3.0,4.6,0,0.18,Yes,Monday,Religious,No,All,Budget,23.2156,72.6369
+322,Agra Fort,Central,Uttar Pradesh,Agra,Fort,2.0,4.5,40,1.3,Yes,Open All Days,Historical,Yes,Afternoon,Budget,27.1767,78.0081
+323,Madhya Pradesh Tribal Museum,Central,Madhya Pradesh,Bhopal,Museum,2.0,4.7,10,0.15,Yes,Monday,Cultural,Yes,All,Budget,23.2599,77.4126
+324,City Palace,Northern,Rajasthan,Jaipur,Palace,2.0,4.4,200,0.51,Yes,Open All Days,Historical,Yes,Morning,Mid-range,26.9124,75.7873
+325,Albert Hall Museum,Northern,Rajasthan,Jaipur,Museum,2.0,4.5,200,0.63,Yes,Open All Days,Historical,Yes,All,Mid-range,26.9124,75.7873

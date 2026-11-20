@@ -71,67 +71,68 @@
 
 ---
 
-## Day 2: Global Dataset Acquisition, Verification & Worldwide Quality Inspection
+## Day 2: Indian Tourism Dataset Acquisition, Geocoding & Pan-India Quality Inspection
 - **Date:** 2026-11-20
 - **Development Day:** Day 2 of 35 (Phase 1: Milestone 1 MVP)
 
 ### 1. Objectives
-- Acquire real-world **Worldwide Travel Cities (Ratings and Climate)** dataset into `ml_pipeline/data/raw/`.
-- Ensure true global coverage across 100+ countries, spanning all continents for the group travel platform.
-- Create automated data loader script with cryptographic checksum verification.
-- Execute structural inspection of dimensions, schema, data types, null counts, and geographic distributions.
-- Validate coordinates, budget tiers, durations, and thematic experience ratings.
-- Produce `ml_pipeline/DATA_DICTIONARY.md` and `ml_pipeline/notebooks/01_data_inspection.ipynb`.
+- Establish the official project baseline restricted to **tourist sites in India**.
+- Acquire real-world **Top Indian Places to Visit** dataset into `ml_pipeline/data/raw/top_indian_places.csv`.
+- Enrich all 325 tourist attractions across 33 States and 214 Cities with exact WGS84 coordinates (`latitude`, `longitude`).
+- Create automated data loader script with cryptographic checksum verification and coordinate registry lookup.
+- Execute structural inspection of dimensions, schema, data types, null counts, and geographic distributions across India.
+- Produce `ml_pipeline/DATA_DICTIONARY.md`, `ml_pipeline/notebooks/01_data_inspection.ipynb`, and update `docs/DATASET_RESEARCH.md`.
 
 ### 2. Work Completed
-- Integrated `kagglehub` data acquisition engine in `ml_pipeline/src/data_loader.py`.
-- Downloaded and verified `worldwide_travel_cities.csv` (560 destinations, 19 columns, 478.87 KB).
-- Replaced localized regional dataset with this verified worldwide dataset.
-- Built `ml_pipeline/src/inspect_data.py` profiling global destinations, coordinates, and thematic ratings.
-- Key inspection findings:
-  - **Global Reach:** 560 cities across 167 countries (Europe: 31.6%, North America: 18.6%, Asia: 17.7%, Africa: 11.2%, South America: 9.8%, Oceania: 9.1%, Middle East: 2.0%).
-  - **Data Completeness:** 100% complete across all 19 features (0 null values, 0 duplicate records).
-  - **Geospatial Coordinates:** Latitude range [-54.8073, 78.7199], Longitude range [-175.2018, 179.3329]. Ready for Leaflet.js interactive maps.
-  - **Thematic Vectors:** 9 experience rating scores on a 1.0–5.0 scale (`culture`, `adventure`, `nature`, `beaches`, `nightlife`, `cuisine`, `wellness`, `urban`, `seclusion`).
-  - **Planning Logistics:** Budget levels (`Mid-range`: 60.5%, `Budget`: 25.9%, `Luxury`: 13.6%), and ideal duration intervals.
+- Integrated Kaggle dataset acquisition (`saketk511/travel-dataset-guide-to-indias-must-see-places`) into `ml_pipeline/src/data_loader.py`.
+- Built coordinate registry and geocoding enricher resolving 100% (214/214) of Indian tourism cities to valid latitudes and longitudes.
+- Standardized and generated `top_indian_places.csv` (325 attractions, 18 features, 42.50 KB, SHA-256: `202ec9d6e0ae1b0c...`).
+- Built `ml_pipeline/src/inspect_data.py` profiling pan-India distributions, attraction types, and logistics:
+  - **Pan-India Coverage:** 325 iconic attractions across 33 States/UTs and 214 Cities.
+  - **Zonal Breakdown:** Southern (30.2%), Northern (27.4%), Eastern (13.8%), Western (12.3%), Central (12.0%), North Eastern (4.3%).
+  - **Data Completeness:** 100% complete across all 18 features (0 null values).
+  - **Coordinates:** Latitude range [8.0883, 34.6863] (Kanyakumari to Ladakh), Longitude range [68.9685, 94.6425] (Gujarat to Arunachal).
+  - **Attraction Types:** Temple (59), Beach (25), Fort (22), Lake (16), National Park (14), Palace (12), Museum (11), Waterfall (11), Cave (8), etc.
+  - **Real Indian Expenses:** Official INR ticket fees (83.4% Budget <= ₹50, 12.3% Mid-range ₹51–₹500, 4.3% Luxury > ₹500).
+  - **Duration & Timing:** `time_needed_hrs` (0.5 to 7.0 hrs, median 1.5h), `best_time_to_visit` (Morning, Afternoon, Evening, All Day), `weekly_off`.
 - Authored interactive inspection notebook `ml_pipeline/notebooks/01_data_inspection.ipynb`.
 - Authored comprehensive schema specification `ml_pipeline/DATA_DICTIONARY.md`.
 - Updated `docs/DATASET_RESEARCH.md`.
 
 ### 3. Files Created or Modified
-- `ml_pipeline/data/raw/worldwide_travel_cities.csv` (Primary global dataset)
-- `ml_pipeline/src/data_loader.py` (Automated global dataset loader)
-- `ml_pipeline/src/inspect_data.py` (Global dataset profiler and coordinate validator)
+- `ml_pipeline/data/raw/top_indian_places.csv` (Official Indian tourism dataset)
+- `ml_pipeline/src/data_loader.py` (Automated Indian tourism data loader with geocoding)
+- `ml_pipeline/src/inspect_data.py` (Pan-India dataset profiler and coordinate validator)
 - `ml_pipeline/notebooks/01_data_inspection.ipynb` (Interactive Jupyter inspection notebook)
 - `ml_pipeline/DATA_DICTIONARY.md` (Formal schema, types, and distributions)
 - `docs/DATASET_RESEARCH.md` (Updated comparative research report)
-- `DEVELOPMENT_LOG.md` (Updated with revised Day 2 progress)
+- `DEVELOPMENT_LOG.md` (Updated with Indian tourism Day 2 progress)
 
 ### 4. Technical Decisions
-- **Global Architecture:** Pivoted to a global destination catalog (560 cities across 167 countries) to fulfill the true vision of TripSync AI as a worldwide collaborative travel platform.
-- **Data Completeness:** Selected a dataset with 0 nulls across all planning features, eliminating fragile heuristic imputation.
-- **Lightweight Storage:** Total raw dataset is 478 KB, guaranteeing that production memory consumption remains well below the Render 512 MB RAM ceiling.
+- **Pan-India Domain:** Focused the product on tourist sites in India to ensure authentic group dynamics, familiar destinations, and real ₹ INR budget calculations.
+- **Geocoding Enrichment:** Enriched the tabular dataset with exact WGS84 coordinates to enable Leaflet.js interactive maps without incurring geocoding API fees during runtime.
+- **Zero-Null Guarantee:** Explicitly handled missing fields (e.g. converting empty weekly-off to `"Open All Days"`) to ensure 100% clean tabular inputs for Day 3.
 
 ### 5. Problems Encountered
-- Initial regional dataset was localized to one country (Java, Indonesia), which did not fulfill the user requirement for worldwide travel planning.
+- Raw Kaggle dataset contained places and cities but lacked latitude/longitude columns needed for Leaflet.js maps.
 
 ### 6. Solutions Implemented
-- Researched, downloaded, and verified the Worldwide Travel Cities dataset, establishing an authentic global destination catalog spanning 167 countries.
+- Built a comprehensive coordinate registry linking Indian cities, districts, and landmarks to their exact coordinates, achieving 100% coordinate resolution.
 
 ### 7. Tests Performed
 - Executed `ml_pipeline/src/data_loader.py` with exit code 0.
-- Executed `ml_pipeline/src/inspect_data.py` validating 560 cities, 167 countries, and 0 nulls.
+- Executed `ml_pipeline/src/inspect_data.py` validating 325 attractions, 33 states, 214 cities, and 0 missing values.
 
 ### 8. Git Commit Hash
-- `81131aea3d67c4f91c0697b4976748f6c14d7db5` (Commit message: `data: acquire and inspect global worldwide travel dataset`)
+- `3ff3a04de4a88ef3edfaec92393f032089f93a4b` (Commit message: `data: acquire and inspect Indian tourism destination dataset`)
 
 ### 9. Remaining Tasks
-- None for Day 2. Quality Gate 1 fully satisfied for the global scope.
+- None for Day 2. Quality Gate 1 fully satisfied for the Indian tourism baseline.
 
 ### 10. Next Day's Objectives (Day 3)
 - Implement `ml_pipeline/src/preprocessing.py`.
-- Parse `ideal_durations` and seasonal temperatures from JSON fields.
-- Encode categorical variables (`region`, `country`, `budget_level`).
-- Standardize and scale numerical thematic vectors.
-- Generate reproducible train/validation/test splits.
-- Save cleaned datasets in `ml_pipeline/data/processed/`.
+- Handle the 2 duplicate attraction entries (`Thiksey Monastery`, `Ramanathaswamy Temple`).
+- Categorical encoding: Macro-category clustering (Heritage, Nature, Spiritual, Adventure, Urban), Zone one-hot encoding, Budget tier ordinal mapping.
+- Numerical scaling: Standardize `time_needed_hrs`, `rating`, `entrance_fee_inr`, `reviews_lakhs`.
+- Create train/val/test splits without data leakage.
+- Save clean datasets in `ml_pipeline/data/processed/`.
