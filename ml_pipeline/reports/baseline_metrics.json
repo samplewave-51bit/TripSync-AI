@@ -1,0 +1,206 @@
+{
+  "models": {
+    "random_baseline": {
+      "model_name": "Random Baseline",
+      "validation": {
+        "rmse": 1.423050848119831,
+        "mae": 1.1712488116419328,
+        "r2": -7.795114772904592,
+        "ndcg_at_5": 0.5626798414641024,
+        "precision_at_5": 0.2833333333333333,
+        "ndcg_at_10": 0.5665596950817314,
+        "precision_at_10": 0.25833333333333336
+      },
+      "test": {
+        "rmse": 1.4156506797332167,
+        "mae": 1.1689303461572347,
+        "r2": -8.85480699951001,
+        "ndcg_at_5": 0.5387769107511027,
+        "precision_at_5": 0.20000000000000004,
+        "ndcg_at_10": 0.5478175047637054,
+        "precision_at_10": 0.21666666666666667
+      }
+    },
+    "global_mean": {
+      "model_name": "Global Mean Baseline",
+      "validation": {
+        "rmse": 0.48094256356868315,
+        "mae": 0.39771887786074184,
+        "r2": -0.004585955392004681,
+        "ndcg_at_5": 0.5345278583012409,
+        "precision_at_5": 0.25,
+        "ndcg_at_10": 0.5543778910362487,
+        "precision_at_10": 0.27499999999999997
+      },
+      "test": {
+        "rmse": 0.45191221839030604,
+        "mae": 0.36089508969222367,
+        "r2": -0.004255194444218846,
+        "ndcg_at_5": 0.5345991872549729,
+        "precision_at_5": 0.15,
+        "ndcg_at_10": 0.5480478548247202,
+        "precision_at_10": 0.15
+      }
+    },
+    "popularity_prior": {
+      "model_name": "Popularity Prior Baseline",
+      "validation": {
+        "rmse": 0.95309136201076,
+        "mae": 0.8408181630546957,
+        "r2": -2.945206511641938,
+        "ndcg_at_5": 0.648697789244376,
+        "precision_at_5": 0.38333333333333336,
+        "ndcg_at_10": 0.6661046097734075,
+        "precision_at_10": 0.39999999999999997
+      },
+      "test": {
+        "rmse": 0.9462779630485924,
+        "mae": 0.8422291795665635,
+        "r2": -3.4032502899132195,
+        "ndcg_at_5": 0.5312715529002402,
+        "precision_at_5": 0.05000000000000001,
+        "ndcg_at_10": 0.520937450240838,
+        "precision_at_10": 0.025000000000000005
+      }
+    },
+    "heuristic_interaction": {
+      "model_name": "Heuristic Interaction Rule",
+      "validation": {
+        "rmse": 1.0904020124916436,
+        "mae": 1.0068255766253869,
+        "r2": -4.163854098268973,
+        "ndcg_at_5": 1.0,
+        "precision_at_5": 1.0,
+        "ndcg_at_10": 0.9999674310741503,
+        "precision_at_10": 1.0
+      },
+      "test": {
+        "rmse": 1.0798895313914965,
+        "mae": 0.9871809197626418,
+        "r2": -4.734487122723993,
+        "ndcg_at_5": 1.0,
+        "precision_at_5": 1.0,
+        "ndcg_at_10": 1.0,
+        "precision_at_10": 1.0
+      }
+    },
+    "numpy_ridge": {
+      "model_name": "Pure NumPy Ridge Regressor",
+      "validation": {
+        "rmse": 0.000962604246713276,
+        "mae": 0.0007402734392430203,
+        "r2": 0.9999959756455857,
+        "ndcg_at_5": 1.0,
+        "precision_at_5": 1.0,
+        "ndcg_at_10": 0.999999962839342,
+        "precision_at_10": 1.0
+      },
+      "test": {
+        "rmse": 0.0009720314407270077,
+        "mae": 0.0007553246969763819,
+        "r2": 0.9999953538145031,
+        "ndcg_at_5": 0.9999999108626209,
+        "precision_at_5": 1.0,
+        "ndcg_at_10": 0.9999998801340806,
+        "precision_at_10": 1.0
+      }
+    },
+    "sklearn_ridge": {
+      "model_name": "Scikit-Learn Ridge Regressor",
+      "validation": {
+        "rmse": 0.000962604246720325,
+        "mae": 0.0007402734392491116,
+        "r2": 0.9999959756455856,
+        "ndcg_at_5": 1.0,
+        "precision_at_5": 1.0,
+        "ndcg_at_10": 0.999999962839342,
+        "precision_at_10": 1.0
+      },
+      "test": {
+        "rmse": 0.0009720314407299215,
+        "mae": 0.0007553246969788843,
+        "r2": 0.9999953538145031,
+        "ndcg_at_5": 0.9999999108626209,
+        "precision_at_5": 1.0,
+        "ndcg_at_10": 0.9999998801340806,
+        "precision_at_10": 1.0
+      }
+    }
+  },
+  "verification": {
+    "max_prediction_diff": 4.676259379721159e-13,
+    "weight_diff": 5.672949198072541e-12,
+    "bias_diff": 7.303713189799055e-12,
+    "is_numerically_identical": true
+  },
+  "top_learned_weights": [
+    [
+      "cosine_thematic_affinity",
+      1.5790432236243612
+    ],
+    [
+      "budget_compatibility",
+      0.9980912909132614
+    ],
+    [
+      "pacing_alignment",
+      0.5990502387908929
+    ],
+    [
+      "bayes_rating_prior",
+      0.15980679255874958
+    ],
+    [
+      "dot_product_utility",
+      0.035449223937370836
+    ],
+    [
+      "user_pref_culture",
+      0.0014874421943098701
+    ],
+    [
+      "user_pref_adventure",
+      -0.0007350143179080493
+    ],
+    [
+      "user_pref_nature",
+      -0.00037823155321365303
+    ],
+    [
+      "user_pref_spiritual",
+      -0.0003417747197386937
+    ],
+    [
+      "user_pref_urban",
+      0.0003093688959589171
+    ],
+    [
+      "user_pacing_pref",
+      -0.00015241825611175827
+    ],
+    [
+      "destination_duration_hrs",
+      -9.809604318805909e-05
+    ],
+    [
+      "destination_log_reviews",
+      8.404977083158905e-05
+    ],
+    [
+      "user_budget_tier",
+      -6.859024901680519e-05
+    ],
+    [
+      "destination_log_fees",
+      -6.043906961938535e-05
+    ],
+    [
+      "destination_latitude",
+      4.24653406434574e-06
+    ],
+    [
+      "destination_longitude",
+      -7.64921293588277e-07
+    ]
+  ]
+}
