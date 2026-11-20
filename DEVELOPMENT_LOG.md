@@ -274,3 +274,74 @@
 - Implement budget compatibility decay functions.
 - Formulate pace alignment score.
 - Validate feature importance and document schema in `ml_pipeline/FEATURE_ENGINEERING.md`.
+
+
+---
+
+## Day 5: Feature Engineering Pipeline & Pairwise Interaction Matrices
+- **Date:** 2026-11-20
+- **Development Day:** Day 5 of 35 (Phase 1: Milestone 1 MVP)
+
+### 1. Objectives
+- Formulate user-destination pairwise interaction features.
+- Implement thematic cosine similarity, dot-product utility, and budget compatibility decay functions.
+- Implement pacing alignment scoring and empirical Bayesian rating shrinkage.
+- Generate user archetype representations matching Indian traveler demographics.
+- Enforce strict disjoint user-level train/validation/test splits (zero group data leakage).
+- Profile feature importance via Random Forest Regressor.
+- Produce `ml_pipeline/FEATURE_ENGINEERING.md` and export Parquet feature splits.
+
+### 2. Work Completed
+- Implemented `ml_pipeline/src/feature_engineering.py`.
+- Formulated 17 predictive features including:
+  - `cosine_thematic_affinity`: Vectorized cosine similarity between user weights and destination themes.
+  - `budget_compatibility`: Exponential decay penalty $\exp(-0.65 \cdot \max(0, \text{cost} - \text{budget}))$.
+  - `pacing_alignment`: Normalized duration match based on travel pacing preference.
+  - `bayes_rating_prior`: Shrinkage prior combining local rating and review counts.
+- Generated 120 diverse traveler profiles spanning 6 Indian travel archetypes.
+- Generated 38,760 pairwise interaction instances across 323 Indian destinations.
+- Enforced Disjoint User-Level Group Split:
+  - Train: 31,008 samples (96 distinct users, 80%)
+  - Validation: 3,876 samples (12 distinct users, 10%)
+  - Test: 3,876 samples (12 distinct users, 10%)
+- Conducted feature importance analysis via 50-tree Random Forest:
+  - Thematic Affinity (78.34%), Budget Compatibility (15.94%), Pacing Alignment (4.96%) account for >99% of total signal.
+- Serialized feature matrices: `train_features.parquet`, `val_features.parquet`, `test_features.parquet`, and `feature_schema.json`.
+- Authored comprehensive specification: `ml_pipeline/FEATURE_ENGINEERING.md`.
+
+### 3. Files Created or Modified
+- `ml_pipeline/src/feature_engineering.py` (Feature engineering and matrix generation engine)
+- `ml_pipeline/FEATURE_ENGINEERING.md` (Formal schema, mathematical equations, and feature importances)
+- `ml_pipeline/data/processed/train_features.parquet` (31,008 interaction samples)
+- `ml_pipeline/data/processed/val_features.parquet` (3,876 interaction samples)
+- `ml_pipeline/data/processed/test_features.parquet` (3,876 interaction samples)
+- `ml_pipeline/data/processed/feature_schema.json` (Structured feature schema and importances)
+- `DEVELOPMENT_LOG.md` (Updated with Day 5 progress)
+
+### 4. Technical Decisions
+- **Disjoint User Splitting:** Partitioned strictly by user ID rather than random row shuffling to ensure validation and test splits evaluate true zero-shot generalization for newly onboarded travel groups.
+- **Exponential Budget Decay:** Designed continuous budget tolerance function rather than hard boolean clipping, allowing the model to smoothly penalize slightly-over-budget attractions without complete exclusion.
+- **Columnar Parquet Serialization:** Used Snappy-compressed Parquet format, compressing 38,760 multi-feature records into less than 400 KB total disk space.
+
+### 5. Problems Encountered
+- Standalone demographic features (e.g. user age, lone budget tier) exhibited virtually zero direct correlation with attraction rating without interaction modeling.
+
+### 6. Solutions Implemented
+- Constructed explicit interaction tensors (cosine affinity, budget compatibility, pacing alignment) which concentrated 94%+ of predictive power.
+
+### 7. Tests Performed
+- Executed `ml_pipeline/src/feature_engineering.py` with exit code 0.
+- Verified disjoint user sets across splits ($\text{Train} \cap \text{Val} = \emptyset, \text{Train} \cap \text{Test} = \emptyset$).
+- Validated Parquet read/write integrity across all 17 feature columns.
+
+### 8. Git Commit Hash
+- `84534831017648ae3c1a7a6724b3fd3a5839927f` (Commit message: `ml: implement feature engineering`)
+
+### 9. Remaining Tasks
+- None for Day 5.
+
+### 10. Next Day's Objectives (Day 6)
+- Implement baseline heuristic model (popularity-based and random baseline).
+- Implement mathematical Content-Based Cosine Similarity Engine using pure NumPy from scratch (`ml_pipeline/src/math_engine.py`).
+- Implement first trained ML algorithm (Regularized Ridge Regression / Random Forest).
+- Build model evaluation pipeline computing RMSE, MAE, NDCG@5, and NDCG@10.

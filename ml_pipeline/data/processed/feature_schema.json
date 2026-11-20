@@ -1,0 +1,51 @@
+{
+  "total_interactions": 38760,
+  "train_samples": 31008,
+  "val_samples": 3876,
+  "test_samples": 3876,
+  "features": [
+    "cosine_thematic_affinity",
+    "dot_product_utility",
+    "budget_compatibility",
+    "pacing_alignment",
+    "bayes_rating_prior",
+    "destination_duration_hrs",
+    "destination_log_reviews",
+    "destination_log_fees",
+    "destination_latitude",
+    "destination_longitude",
+    "user_pref_culture",
+    "user_pref_nature",
+    "user_pref_spiritual",
+    "user_pref_adventure",
+    "user_pref_urban",
+    "user_budget_tier",
+    "user_pacing_pref"
+  ],
+  "feature_count": 17,
+  "feature_importances": {
+    "cosine_thematic_affinity": 0.7834,
+    "dot_product_utility": 0.0047,
+    "budget_compatibility": 0.1594,
+    "pacing_alignment": 0.0496,
+    "bayes_rating_prior": 0.0022,
+    "destination_duration_hrs": 0.0002,
+    "destination_log_reviews": 0.0001,
+    "destination_log_fees": 0.0001,
+    "destination_latitude": 0.0,
+    "destination_longitude": 0.0,
+    "user_pref_culture": 0.0,
+    "user_pref_nature": 0.0002,
+    "user_pref_spiritual": 0.0,
+    "user_pref_adventure": 0.0,
+    "user_pref_urban": 0.0,
+    "user_budget_tier": 0.0,
+    "user_pacing_pref": 0.0
+  },
+  "target_variable": "target_affinity_score",
+  "artifacts": {
+    "train": "C:\\Projects\\TripSync-AI\\ml_pipeline\\data\\processed\\train_features.parquet",
+    "val": "C:\\Projects\\TripSync-AI\\ml_pipeline\\data\\processed\\val_features.parquet",
+    "test": "C:\\Projects\\TripSync-AI\\ml_pipeline\\data\\processed\\test_features.parquet"
+  }
+}
