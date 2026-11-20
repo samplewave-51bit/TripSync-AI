@@ -1,0 +1,52 @@
+{
+  "total_attractions": 323,
+  "states_count": 32,
+  "cities_count": 214,
+  "rating_stats": {
+    "mean": 4.485139318885448,
+    "std": 0.27509833775724946,
+    "median": 4.5,
+    "min": 1.4,
+    "max": 4.9,
+    "skewness": -4.7864363290167296
+  },
+  "time_needed_stats": {
+    "mean": 1.8095975232198143,
+    "std": 0.974106132186854,
+    "median": 1.5,
+    "min": 0.5,
+    "max": 7.0
+  },
+  "fee_stats_inr": {
+    "mean": 116.43343653250774,
+    "median": 0.0,
+    "min": 0.0,
+    "max": 7500.0,
+    "zero_fee_pct": 56.34674922600619
+  },
+  "reviews_lakhs_stats": {
+    "mean": 0.41078173374613,
+    "median": 0.17,
+    "max": 7.4
+  },
+  "macro_category_counts": {
+    "culture_heritage": 135,
+    "spiritual_religious": 71,
+    "nature_wildlife": 64,
+    "adventure_outdoor": 34,
+    "urban_entertainment": 19
+  },
+  "zonal_counts": {
+    "Southern": 97,
+    "Northern": 88,
+    "Eastern": 45,
+    "Western": 40,
+    "Central": 39,
+    "North Eastern": 14
+  },
+  "budget_tier_counts": {
+    "Budget": 269,
+    "Mid-range": 40,
+    "Luxury": 14
+  }
+}

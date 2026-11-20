@@ -205,3 +205,72 @@
 - Statistical analysis of feature correlations and target rating distributions.
 - Generate and save visual distribution charts in `ml_pipeline/reports/figures/`.
 - Create `ml_pipeline/notebooks/03_eda_visualizations.ipynb` and `ml_pipeline/reports/EDA_REPORT.md`.
+
+
+---
+
+## Day 4: Exploratory Data Analysis (EDA) & Statistical Visualization
+- **Date:** 2026-11-20
+- **Development Day:** Day 4 of 35 (Phase 1: Milestone 1 MVP)
+
+### 1. Objectives
+- Perform statistical analysis of destination distributions, ratings, fees, and visit pacing.
+- Investigate feature correlations and multi-collinearity across engineered features.
+- Generate and save 7 publication-grade visualization figures in `ml_pipeline/reports/figures/`.
+- Export structured descriptive metrics in `ml_pipeline/reports/eda_summary_statistics.json`.
+- Produce `ml_pipeline/notebooks/03_eda_visualizations.ipynb` and `ml_pipeline/reports/EDA_REPORT.md`.
+
+### 2. Work Completed
+- Built automated EDA script `ml_pipeline/src/eda_analysis.py` using `matplotlib` and `seaborn`.
+- Exported 7 visual charts at 300 DPI:
+  - `01_target_rating_distribution.png`: Histogram & KDE of Google review ratings.
+  - `02_macro_thematic_distribution.png`: Bar breakdown of 5 macro-thematic dimensions.
+  - `03_zonal_and_state_coverage.png`: Pan-India zonal pie chart and top 10 states bar chart.
+  - `04_budget_tier_and_fees.png`: Entrance fee distribution and log-fee boxplot.
+  - `05_visit_duration_by_category.png`: Duration distributions (hours) across categories.
+  - `06_feature_correlation_heatmap.png`: Pearson correlation matrix across model features.
+  - `07_geospatial_attraction_scatter.png`: Geographic latitude/longitude scatter map of India.
+- Generated `ml_pipeline/reports/eda_summary_statistics.json` capturing numerical summaries.
+- Key statistical findings:
+  - Rating mean: 4.49, median: 4.50 (left-skewed distribution).
+  - Duration mean: 1.81 hrs, median: 1.50 hrs (ideal for 2–3 POIs/day).
+  - 56.3% of Indian attractions are free of charge.
+  - Culture & Heritage (41.8%), Spiritual (22.0%), and Nature (19.8%) dominate Indian tourism.
+- Authored interactive notebook `ml_pipeline/notebooks/03_eda_visualizations.ipynb`.
+- Authored comprehensive report `ml_pipeline/reports/EDA_REPORT.md`.
+
+### 3. Files Created or Modified
+- `ml_pipeline/src/eda_analysis.py` (Automated EDA generation script)
+- `ml_pipeline/notebooks/03_eda_visualizations.ipynb` (Interactive EDA Jupyter notebook)
+- `ml_pipeline/reports/EDA_REPORT.md` (Formal EDA report)
+- `ml_pipeline/reports/eda_summary_statistics.json` (Structured statistical metrics)
+- `ml_pipeline/reports/figures/*.png` (7 high-resolution visualization charts)
+- `DEVELOPMENT_LOG.md` (Updated with Day 4 progress)
+
+### 4. Technical Decisions
+- **Pairwise Ranking Proxy:** Target ratings are heavily left-skewed (85% between 4.2 and 4.8). To avoid variance collapse in direct regression, relative affinity scoring and ranking will be prioritized in Day 5/6.
+- **Duration-Category Coupling:** Confirmed that adventure and nature destinations require 2.5–4.0 hours, whereas spiritual landmarks require 1.0–1.5 hours. This empirical constraint will be directly injected into the Day 13 itinerary generator.
+
+### 5. Problems Encountered
+- Matplotlib font cache initialization warning in headless Windows environment.
+
+### 6. Solutions Implemented
+- Configured non-interactive Agg backend (`matplotlib.use("Agg")`) to ensure clean execution across headless server and CI environments.
+
+### 7. Tests Performed
+- Executed `ml_pipeline/src/eda_analysis.py` with exit code 0.
+- Verified generation of all 7 PNG files and JSON summary file.
+- Confirmed zero NaN values in correlation matrix.
+
+### 8. Git Commit Hash
+- `57666f3ca73de3446dc47d6bc3f4e5184fcc71dd` (Commit message: `ml: complete exploratory data analysis`)
+
+### 9. Remaining Tasks
+- None for Day 4.
+
+### 10. Next Day's Objectives (Day 5)
+- Feature Engineering Pipeline (`ml_pipeline/src/feature_engineering.py`).
+- Implement user-destination interaction features (cosine similarity between user survey weights and attraction vectors).
+- Implement budget compatibility decay functions.
+- Formulate pace alignment score.
+- Validate feature importance and document schema in `ml_pipeline/FEATURE_ENGINEERING.md`.
