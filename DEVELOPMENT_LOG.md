@@ -657,7 +657,7 @@
 - Validated OpenAPI documentation schema generation.
 
 ### 8. Git Commit Hash
-- `6038a77` (Commit message: `feat: initialize backend and database infrastructure`)
+- `9b346fb` (Commit message: `feat: initialize backend and database infrastructure`)
 
 ### 9. Remaining Tasks
 - None for Day 9.
@@ -667,3 +667,84 @@
 - Generate initial baseline Alembic database migration (`001_initial_schema.py`).
 - Seed destination and attraction catalog from `places_cleaned.csv` into database tables.
 - Implement repository / CRUD access layer for core entities.
+
+
+---
+
+## Day 10: Normalized Database Schema, Seeding & Repository Layer
+- **Date:** 2026-11-22
+- **Development Day:** Day 10 of 35 (Phase 1: Milestone 1 MVP)
+
+### 1. Objectives
+- Implement normalized 3NF SQLAlchemy 2.0 ORM models for all core domain entities (`User`, `Trip`, `TripMember`, `Preference`, `Destination`, `Attraction`, `Recommendation`, `Vote`, `BudgetItem`, `ItineraryDay`, `ItineraryItem`).
+- Create initial Alembic baseline migration (`001_initial_schema.py`) covering all 11 relational tables and indexes.
+- Build automated, idempotent database seeder (`backend/app/db/seed.py`) ingesting all 323 verified Indian attractions and destination hubs from `places_cleaned.csv`.
+- Implement generic and specialized repository CRUD layer (`backend/app/crud/`).
+- Build comprehensive unit test suite (`backend/tests/test_database.py`) verifying schema integrity, cascade delete behavior, seeder idempotency, and CRUD search operations.
+
+### 2. Work Completed
+- **SQLAlchemy 2.0 Domain Entities (`backend/app/models/`):**
+  - `User`: Identity entity with email index, hashed password, and cascade relationships to created trips, memberships, and preferences.
+  - `Trip`, `TripMember`, `Preference`: Collaboration entities enforcing unique trip invite codes, role-based membership (`OWNER`, `EDITOR`, `MEMBER`, `VIEWER`), and structured JSON preference weights.
+  - `Destination`, `Attraction`: Pan-India tourism catalog entities storing coordinates, ratings, entrance fees in INR, visit durations, weekly off days, budget tiers, and 5D thematic vectors.
+  - `Recommendation`, `Vote`, `BudgetItem`, `ItineraryDay`, `ItineraryItem`: Execution entities capturing AI recommendation snapshots, member ballots, shared budget tracking, and day-by-day scheduling.
+- **Alembic Initial Migration (`backend/alembic/versions/001_initial_schema.py`):**
+  - Authored full DDL migration creating all 11 tables with foreign key constraints, cascade rules, and indexes.
+- **Automated Catalog Seeder (`backend/app/db/seed.py`):**
+  - Parses `ml_pipeline/data/processed/places_cleaned.csv`.
+  - Automatically identifies and seeds 213 distinct destination city hubs.
+  - Seeds all 323 Indian tourist attractions with exact geocodes, fees, and thematic attributes.
+  - Implemented duplicate checks to ensure complete idempotency on repeated executions.
+- **Repository Access Layer (`backend/app/crud/`):**
+  - `CRUDBase`: Type-safe generic repository providing `get`, `get_multi`, `create`, and `remove`.
+  - `CRUDAttraction`: Domain queries supporting text search (`ilike`), geographic filtering (state, city, zone), category filtering, and fee capping.
+  - `CRUDUser`: User authentication lookup by normalized email.
+- **Automated Unit Test Suite (`backend/tests/test_database.py`):**
+  - `test_01_seeding_catalog`: Verified 323 attractions and 213 destinations seeded; verified idempotency (0 added on second run).
+  - `test_02_attraction_crud_searches`: Verified query by `place_id`, state filtering, keyword search, and free-entry filtering.
+  - `test_03_user_creation_and_trips`: Verified user creation, trip creation, invite codes, and relational cascade deletes.
+  - **Result:** All 3 database tests passed, and combined backend suite passed (7/7 tests passing).
+
+### 3. Files Created or Modified
+- `backend/app/models/user.py` (User authentication and profile model)
+- `backend/app/models/trip.py` (Trip, TripMember, Preference models)
+- `backend/app/models/destination.py` (Destination, Attraction models)
+- `backend/app/models/planning.py` (Recommendation, Vote, BudgetItem, ItineraryDay, ItineraryItem models)
+- `backend/app/models/__init__.py` (Centralized declarative model exports)
+- `backend/alembic/versions/001_initial_schema.py` (Baseline DDL migration)
+- `backend/app/db/seed.py` (Indian destination & attraction catalog seeder)
+- `backend/app/crud/base.py` (Generic CRUD repository base)
+- `backend/app/crud/crud_attraction.py` (Attraction catalog repository)
+- `backend/app/crud/crud_user.py` (User repository)
+- `backend/app/crud/__init__.py` (CRUD repository exports)
+- `backend/tests/test_database.py` (Unit test suite for models and seeding)
+- `DEVELOPMENT_LOG.md` (Updated with Day 10 progress)
+
+### 4. Technical Decisions
+- **Foreign Key Cascades on Trips:** Configured `ondelete="CASCADE"` on `TripMember`, `Preference`, `Recommendation`, `BudgetItem`, and `ItineraryDay` to ensure that deleting a group workspace cleanly purges all child records without orphan retention.
+- **JSON Field Serialization Across Engines:** Used SQLAlchemy generic `JSON` column type for preference weights and attraction themes, enabling transparent native JSONB in PostgreSQL and automatic string serialization in SQLite without dialect-specific branches.
+- **Pre-Aggregated City Destinations:** Programmatically grouped attractions by city and state to establish regional hubs while preserving granular attraction coordinates for Leaflet GIS mapping.
+
+### 5. Problems Encountered
+- Test assertion failed expecting place_id=1 to be "Taj Mahal" when place_id=1 in the cleaned Kaggle dataset is "India Gate" (Delhi).
+
+### 6. Solutions Implemented
+- Updated test verification to match authentic dataset values ("India Gate", Delhi), completing 100% test pass rate.
+
+### 7. Tests Performed
+- Ran `python -m unittest backend.tests.test_database` (3 tests passed in 0.46s).
+- Ran `python -m unittest discover -s backend/tests` (7 tests passed in 4.92s).
+- Ran `python -m backend.app.db.seed` successfully populating 213 destinations and 323 attractions.
+
+### 8. Git Commit Hash
+- `44fca31` (Commit message: `feat: implement database models and seed Indian destinations`)
+
+### 9. Remaining Tasks
+- None for Day 10.
+
+### 10. Next Day's Objectives (Day 11)
+- Implement user authentication & security subsystem (`backend/app/core/security.py`).
+- Implement password hashing with bcrypt and JWT access token issuance/validation.
+- Implement user registration, login, and current user (`get_current_user`) FastAPI dependency.
+- Build auth endpoints: `POST /api/v1/auth/register`, `POST /api/v1/auth/login`, `GET /api/v1/auth/me`.
+- Write unit tests for authentication and authorization flows.
