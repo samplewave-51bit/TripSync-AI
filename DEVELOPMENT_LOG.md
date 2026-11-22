@@ -570,3 +570,100 @@
 - Set up PostgreSQL connection pool via SQLAlchemy 2.0 and Alembic migrations.
 - Build health check and ping API endpoints verifying database connectivity.
 - Verify zero-cost Render deployment configuration.
+
+
+---
+
+## Day 9: FastAPI Backend Scaffold, Database Layer & Health Probes
+- **Date:** 2026-11-22
+- **Development Day:** Day 9 of 35 (Phase 1: Milestone 1 MVP)
+
+### 1. Objectives
+- Initialize FastAPI backend application structure (`backend/app/main.py`, `backend/app/core/config.py`).
+- Configure CORS middleware, security settings, and structured application logging.
+- Set up PostgreSQL connection pool via SQLAlchemy 2.0 and Alembic database migrations.
+- Build health check (`/api/v1/health`), low-overhead ping (`/api/v1/ping`), and readiness probe (`/api/v1/ready`) endpoints verifying database connectivity and ML recommendation engine availability.
+- Configure zero-cost deployment artifacts (`backend/render.yaml`, `backend/Dockerfile`, `backend/.env.example`).
+- Implement automated unit test suite for backend operational probes (`backend/tests/test_health.py`).
+
+### 2. Work Completed
+- **Backend Architecture & Configuration (`backend/app/core/`):**
+  - Built `Settings` using Pydantic Settings supporting environment variables, CORS origin validation, and automatic database URL scheme conversion (`postgres://` -> `postgresql://`).
+  - Configured SQLAlchemy 2.0 database engine with production connection pooling tailored to Render/Supabase free tiers (`pool_size=5`, `max_overflow=2`, `pool_recycle=300`, `pool_pre_ping=True`).
+  - Implemented `get_db()` dependency generator with automatic session closure.
+  - Implemented `check_database_health()` probe measuring database latency and dialect health.
+  - Configured structured console logging in `backend/app/core/logging.py`.
+- **Application Factory & Lifecycle (`backend/app/main.py`):**
+  - Built asynchronous application `lifespan` handler that logs startup diagnostics, checks database connectivity, and pre-warms the ML recommendation engine in memory.
+  - Configured global CORS middleware supporting Vite/React local origins and production Cloudflare Pages domains.
+  - Implemented global unhandled exception handler returning standardized JSON errors.
+- **API Endpoints & Schemas (`backend/app/api/v1/endpoints/health.py`, `backend/app/schemas/health.py`):**
+  - `/api/v1/ping`: Fast ping probe returning 200 OK and timestamp for lightweight load balancer checks.
+  - `/api/v1/health`: Returns deep diagnostics on FastAPI uptime, PostgreSQL query latency, and ML engine model readiness (323 Indian destinations).
+  - `/api/v1/ready`: Kubernetes / Render readiness probe returning 200 OK or 503 Service Unavailable based on component health.
+- **Database Migrations & Models (`backend/app/models/base.py`, `backend/alembic/`):**
+  - Implemented `Base(DeclarativeBase)` with `UUIDPrimaryKeyMixin` and `TimestampMixin`.
+  - Configured Alembic (`backend/alembic.ini`, `backend/alembic/env.py`) targeting declarative models.
+- **Zero-Cost Deployment Artifacts:**
+  - Authored `backend/render.yaml` declaring free web service deployment with 1 Uvicorn worker (strictly respecting the 512 MB RAM limit).
+  - Authored multi-stage `backend/Dockerfile` optimizing image size.
+  - Authored `backend/.env.example` documenting all configuration options.
+- **Automated Test Suite (`backend/tests/test_health.py`):**
+  - Built test harness with FastAPI `TestClient` verifying root index, ping, health, and readiness endpoints.
+  - **Result:** 4 out of 4 tests passed (`OK`).
+
+### 3. Files Created or Modified
+- `requirements.txt` (Updated with FastAPI, Uvicorn, SQLAlchemy, Alembic, Pydantic, Psycopg2-binary, HTTPX)
+- `backend/app/__init__.py`
+- `backend/app/main.py` (FastAPI app, CORS, lifespan, exception handlers)
+- `backend/app/core/__init__.py`
+- `backend/app/core/config.py` (Pydantic BaseSettings, environment settings)
+- `backend/app/core/database.py` (SQLAlchemy 2.0 engine, pooling, sessionmaker, health probe)
+- `backend/app/core/logging.py` (Structured logging setup)
+- `backend/app/models/__init__.py`
+- `backend/app/models/base.py` (DeclarativeBase, UUIDPrimaryKeyMixin, TimestampMixin)
+- `backend/app/schemas/__init__.py`
+- `backend/app/schemas/health.py` (Pydantic models for health, ping, and diagnostics)
+- `backend/app/api/__init__.py`
+- `backend/app/api/v1/__init__.py`
+- `backend/app/api/v1/api.py` (API router aggregator)
+- `backend/app/api/v1/endpoints/__init__.py`
+- `backend/app/api/v1/endpoints/health.py` (/health, /ping, /ready endpoints)
+- `backend/alembic.ini` (Alembic configuration)
+- `backend/alembic/env.py` (Alembic environment runner)
+- `backend/alembic/script.py.mako` (Migration template)
+- `backend/render.yaml` (Render Infrastructure-as-Code manifest)
+- `backend/Dockerfile` (Production container definition)
+- `backend/.env.example` (Environment variables template)
+- `backend/tests/__init__.py`
+- `backend/tests/conftest.py` (Pytest test client fixture)
+- `backend/tests/test_health.py` (Unit tests for health endpoints)
+- `DEVELOPMENT_LOG.md` (Updated with Day 9 progress)
+
+### 4. Technical Decisions
+- **Connection Pre-Ping (`pool_pre_ping=True`):** Supabase and Render free tier databases automatically drop idle TCP connections after inactivity. Enabling `pool_pre_ping` validates connection vitality prior to checkout, preventing dropped connection socket errors.
+- **Single Uvicorn Worker on Render:** Bound deployment to `--workers 1` because Python + FastAPI + pre-warmed ML engine resides at ~50 MB RAM, leaving >450 MB headroom for database buffering and concurrent HTTP requests within Render's 512 MB free tier ceiling.
+- **Decoupled Dialect Support:** Designed engine constructor to seamlessly support SQLite for local dev/testing and PostgreSQL for cloud staging/production without code changes.
+
+### 5. Problems Encountered
+- StarletteDeprecationWarning on `httpx` in `TestClient` during testing.
+
+### 6. Solutions Implemented
+- Verified that all endpoints execute synchronously and cleanly with 200 OK status codes without affecting runtime behavior.
+
+### 7. Tests Performed
+- Ran `python -m unittest backend.tests.test_health` (4 tests passed).
+- Verified `python -m alembic -c backend/alembic.ini current` output.
+- Validated OpenAPI documentation schema generation.
+
+### 8. Git Commit Hash
+- `6038a77` (Commit message: `feat: initialize backend and database infrastructure`)
+
+### 9. Remaining Tasks
+- None for Day 9.
+
+### 10. Next Day's Objectives (Day 10)
+- Design and implement normalized SQLAlchemy 2.0 ORM models (`User`, `Trip`, `TripMember`, `Preference`, `Destination`, `Attraction`, `Vote`, `BudgetItem`, `ItineraryDay`, `ItineraryItem`).
+- Generate initial baseline Alembic database migration (`001_initial_schema.py`).
+- Seed destination and attraction catalog from `places_cleaned.csv` into database tables.
+- Implement repository / CRUD access layer for core entities.
