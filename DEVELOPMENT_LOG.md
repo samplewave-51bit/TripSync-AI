@@ -737,7 +737,7 @@
 - Ran `python -m backend.app.db.seed` successfully populating 213 destinations and 323 attractions.
 
 ### 8. Git Commit Hash
-- `44fca31` (Commit message: `feat: implement database models and seed Indian destinations`)
+- `c3dd974` (Commit message: `feat: implement database models and seed Indian destinations`)
 
 ### 9. Remaining Tasks
 - None for Day 10.
@@ -748,3 +748,93 @@
 - Implement user registration, login, and current user (`get_current_user`) FastAPI dependency.
 - Build auth endpoints: `POST /api/v1/auth/register`, `POST /api/v1/auth/login`, `GET /api/v1/auth/me`.
 - Write unit tests for authentication and authorization flows.
+
+
+---
+
+## Day 11: Authentication, Password Hashing & JWT Authorization Subsystem
+- **Date:** 2026-11-22
+- **Development Day:** Day 11 of 35 (Phase 1: Milestone 1 MVP)
+
+### 1. Objectives
+- Implement user authentication & security subsystem (`backend/app/core/security.py`).
+- Implement cryptographic password hashing with bcrypt (12 rounds) and JWT access token issuance/validation (HS256).
+- Implement Pydantic data schemas for registration, login, token responses, and user profiles (`backend/app/schemas/user.py`).
+- Implement user registration, login, and current user (`get_current_user`, `get_current_active_user`) FastAPI dependency injection (`backend/app/api/deps.py`).
+- Build auth endpoints:
+  - `POST /api/v1/auth/register`: Traveler account creation with duplicate email prevention.
+  - `POST /api/v1/auth/login`: JSON-based credential authentication.
+  - `POST /api/v1/auth/login/access-token`: OAuth2 compatible form login.
+  - `GET /api/v1/auth/me`: Authenticated profile retrieval.
+  - `PUT /api/v1/auth/me`: Profile updates (name, avatar, password).
+- Author comprehensive unit and integration test suite (`backend/tests/test_auth.py`).
+
+### 2. Work Completed
+- **Security & Token Utilities (`backend/app/core/security.py`):**
+  - Implemented direct `bcrypt` salt generation (`bcrypt.gensalt(rounds=12)`) and password hashing/verification.
+  - Implemented `create_access_token` issuing signed JWT tokens with claims (`sub`, `iat`, `exp`, `type="access_token"`).
+  - Implemented `decode_access_token` validating signature, token expiration, and subject claims.
+- **Pydantic Validation Schemas (`backend/app/schemas/user.py`):**
+  - `UserBase`, `UserCreate` (strict minimum 8-character password constraint), `UserUpdate`, `UserResponse` (excluding hashed passwords), `UserLogin`, `Token`, `TokenPayload`.
+- **FastAPI Authentication Dependencies (`backend/app/api/deps.py`):**
+  - Configured `OAuth2PasswordBearer` and `get_current_user` dependency validating Bearer tokens against the database.
+  - Configured `get_current_active_user` rejecting inactive accounts with 400 Bad Request.
+- **Authentication Endpoints (`backend/app/api/v1/endpoints/auth.py`):**
+  - `POST /api/v1/auth/register`: Creates new user, hashes password, returns 201 Created and signed JWT.
+  - `POST /api/v1/auth/login`: Validates credentials, returns 200 OK and signed JWT.
+  - `POST /api/v1/auth/login/access-token`: OAuth2 password flow form handler.
+  - `GET /api/v1/auth/me`: Protected endpoint returning authenticated profile.
+  - `PUT /api/v1/auth/me`: Allows changing user full name, avatar URL, or password.
+- **Automated Integration Test Suite (`backend/tests/test_auth.py`):**
+  - Validated bcrypt salting and verification.
+  - Validated JWT creation, subject extraction, and rejection of malformed tokens.
+  - Validated registration, duplicate email rejection (400), valid login (200), bad password rejection (401), unknown email rejection (401).
+  - Validated protected `/api/v1/auth/me` with Bearer token injection and profile updates.
+  - **Result:** All 7 auth tests passed, bringing total backend test suite to 14/14 passing tests.
+
+### 3. Files Created or Modified
+- `requirements.txt` (Updated with bcrypt, pyjwt, email-validator, python-multipart)
+- `backend/app/core/security.py` (Bcrypt hashing and JWT token issuance)
+- `backend/app/schemas/user.py` (Pydantic user and auth schemas)
+- `backend/app/schemas/__init__.py` (Centralized schema exports)
+- `backend/app/crud/crud_user.py` (User creation, authentication, and profile updates)
+- `backend/app/api/deps.py` (FastAPI authentication dependency injection)
+- `backend/app/api/v1/endpoints/auth.py` (Authentication & identity router endpoints)
+- `backend/app/api/v1/api.py` (Mounted auth router)
+- `backend/tests/test_auth.py` (Unit and integration test suite)
+- `DEVELOPMENT_LOG.md` (Updated with Day 11 progress)
+
+### 4. Technical Decisions
+- **Direct Bcrypt over Deprecated Passlib:** Utilized direct `bcrypt` library rather than legacy `passlib` to ensure forward compatibility with Python 3.11/3.12+ and eliminate deprecation warnings.
+- **PyJWT for Token Signatures:** Used standard `PyJWT` rather than `python-jose` for secure, lightweight HS256 JWT encoding and decoding.
+- **Stateless Bearer Authentication:** Enforced stateless JWT tokens for API requests, allowing the backend to operate without session storage overhead, perfectly matching Render's zero-cost memory envelope.
+
+### 5. Problems Encountered
+- `email-validator` missing for Pydantic `EmailStr` field validation.
+- `python-multipart` missing for FastAPI `OAuth2PasswordRequestForm` parsing.
+- Static test user emails collided when re-running test suites against persistent databases.
+
+### 6. Solutions Implemented
+- Installed `email-validator` and `python-multipart` and preserved state in `requirements.txt`.
+- Parameterized test email addresses with unique UUID seeds, guaranteeing 100% test idempotency.
+
+### 7. Tests Performed
+- Ran `python -m unittest backend.tests.test_auth` (7 tests passed in 3.94s).
+- Ran `python -m unittest discover -s backend/tests` (14 tests passed in 6.78s across health, database, and auth suites).
+
+### 8. Git Commit Hash
+- `a8c93ff` (Commit message: `feat: implement authentication and security subsystem`)
+
+### 9. Remaining Tasks
+- None for Day 11.
+
+### 10. Next Day's Objectives (Day 12)
+- Implement collaborative trip management subsystem:
+  - Create trips with automatic invite code generation.
+  - Join trips via invite code with role assignment (`MEMBER`).
+  - List user's active and past trips.
+  - Manage trip members (roles, permissions, member removal).
+- Implement member preference survey endpoints:
+  - Submit / update multi-criteria preference weights (culture, nature, spiritual, adventure, urban), budget bounds, and pacing.
+  - Retrieve group member preference aggregate status.
+- Write unit and integration tests for trip creation, invite codes, member joins, and surveys.
